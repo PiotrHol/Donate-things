@@ -1,0 +1,158 @@
+@import "../../scss/main.scss";
+
+.navigation {
+    width: 100%;
+    background: transparent;
+
+    &__content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        @include mediaDesktop {
+            padding: 45px 70px 45px 0;
+        }
+
+        @include mediaMax {
+            padding-right: 140px;
+        }
+    }
+
+    &__btn {
+        display: none;
+
+        &:checked ~ .navigation__menu-icon .navigation__nav-icon {
+            background: transparent;
+        }
+
+        &:checked ~ .navigation__menu-icon .navigation__nav-icon::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        &:checked ~ .navigation__menu-icon .navigation__nav-icon::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        &:checked ~ .navigation__nav {
+            transform: translate(0);
+        }
+    }
+
+    &__menu-icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        margin: 20px;
+        cursor: pointer;
+        z-index: 2;
+
+        @include mediaDesktop {
+            display: none;
+        }
+    }
+
+    &__nav-icon {
+        display: block;
+        background-color: $colorImportant;
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        top: 12px;
+
+        &::before, &::after {
+          content: "";
+          display: block;
+          background-color: $colorImportant;
+          width: 100%;
+          height: 4px;
+          position: absolute;
+          transition: all 0.2s ease-out;
+        }
+
+        &::before {
+          top: -12px;
+        }
+
+        &::after {
+          top: 12px;
+        }
+    }
+
+    &__nav {
+        width: 100%;
+        position: absolute;
+        font-size: 18px;
+        text-align: center;
+        transform: translate(0, -105%);
+        transition: all 0.5s ease-out;
+        z-index: 1;
+        padding: 5px 0;
+        box-shadow: 0 0 5px $colorDarkGray;
+        background: $colorWhite;
+
+        @include mediaDesktop {
+            transform: none;
+            position: static;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+            box-shadow: none;
+        }
+    }
+
+    &__page-nav {
+        &-link {
+            display: block;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            // &_active {
+            //     @include mediaDesktop {
+            //         border: 0.75px solid $colorText;   
+            //     }
+            // }
+        }
+
+        &-active {
+            @include mediaDesktop {
+                border: 0.75px solid $colorText;   
+            }
+        }
+
+        @include mediaDesktop {
+            display: flex;
+        }
+    }
+
+    &__auth-nav {
+        color: $colorDarkGray;
+
+        &-link {
+            display: block;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            &_active {
+                @include mediaDesktop {
+                    border: 0.75px solid $colorImportant;
+                }
+            }
+
+            @include mediaDesktop {
+                padding: 10px;
+                margin-right: 20px;
+                color: $colorDarkGray;
+            }
+        }
+
+        @include mediaDesktop {
+            font-size: 14px;
+            display: flex;
+            padding-bottom: 15px;
+        }
+    }
+}
