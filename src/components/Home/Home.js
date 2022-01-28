@@ -1,7 +1,11 @@
 import React from "react";
+import "./home.scss";
+import { HomeHeader } from "../HomeHeader/HomeHeader";
 
 export const Home = () => {
     return (
-        <div>Home component</div>
+        <div className="home">
+            <HomeHeader />
+        </div>
     );
 }
