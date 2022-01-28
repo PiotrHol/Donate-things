@@ -1,7 +1,17 @@
 @import './settings/reset.scss';
 @import './settings/fonts.scss';
 @import './settings/colors.scss';
+@import './settings//mixins.scss';
 
 body {
     font-family: $font-base;
+    color: $colorText;
+    padding: 0 10px;
+    background: $colorBg;
+}
+
+.app {
+    max-width: 1366px;
+    margin: 0 auto;
+    background: $colorWhite;
 }
