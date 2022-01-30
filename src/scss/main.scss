@@ -10,9 +10,12 @@ body {
 }
 
 .app {
-    max-width: 1366px;
+    max-width: 1600px;
     margin: 0 auto;
-    background: $colorWhite;
+
+    @include mediaDesktop {
+      background: $colorWhite;
+    }
 }
 
 a {
