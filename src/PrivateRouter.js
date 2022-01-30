@@ -6,7 +6,7 @@ export const PrivateRouter = ({children, ...rest}) => {
     return (
         <Route {...rest} render={
             ({location}) => isAuthenticated ? children : <Redirect to={{
-                pathname: "/",
+                pathname: "/logowanie",
                 state: {
                     from: location
                 }
