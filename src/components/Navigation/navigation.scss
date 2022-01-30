@@ -110,16 +110,10 @@
             padding: 10px 20px;
             cursor: pointer;
 
-            // &_active {
-            //     @include mediaDesktop {
-            //         border: 0.75px solid $colorText;   
-            //     }
-            // }
-        }
-
-        &-active {
-            @include mediaDesktop {
-                border: 0.75px solid $colorText;   
+            &--active {
+                @include mediaDesktop {
+                    border: 0.75px solid $colorText;   
+                }
             }
         }
 
@@ -136,7 +130,7 @@
             padding: 10px 20px;
             cursor: pointer;
 
-            &_active {
+            &--active {
                 @include mediaDesktop {
                     border: 0.75px solid $colorImportant;
                 }

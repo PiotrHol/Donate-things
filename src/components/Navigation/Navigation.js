@@ -24,27 +24,67 @@ export const Navigation = () => {
         <nav className="navigation__nav">
           <ul className="navigation__page-nav">
             <li>
-              <Scroll className="navigation__page-nav-link" to="" onClick={() => showMenu && setShowMenu(false)}>
+              <Scroll
+                activeClass="navigation__page-nav-link--active"
+                to=""
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navigation__page-nav-link"
+                onClick={() => showMenu && setShowMenu(false)}
+              >
                 Start
               </Scroll>
             </li>
             <li>
-              <Scroll className="navigation__page-nav-link" to="" onClick={() => showMenu && setShowMenu(false)}>
+              <Scroll
+                activeClass="navigation__page-nav-link--active"
+                to=""
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navigation__page-nav-link"
+                onClick={() => showMenu && setShowMenu(false)}
+              >
                 O co chodzi?
               </Scroll>
             </li>
             <li>
-              <Scroll className="navigation__page-nav-link" to="" onClick={() => showMenu && setShowMenu(false)}>
+              <Scroll
+                activeClass="navigation__page-nav-link--active"
+                to=""
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navigation__page-nav-link"
+                onClick={() => showMenu && setShowMenu(false)}
+              >
                 O nas
               </Scroll>
             </li>
             <li>
-              <Scroll className="navigation__page-nav-link" to="" onClick={() => showMenu && setShowMenu(false)}>
+              <Scroll
+                activeClass="navigation__page-nav-link--active"
+                to=""
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navigation__page-nav-link"
+                onClick={() => showMenu && setShowMenu(false)}
+              >
                 Fundacja i organizacje
               </Scroll>
             </li>
             <li>
-              <Scroll className="navigation__page-nav-link" to="" onClick={() => showMenu && setShowMenu(false)}>
+              <Scroll
+                activeClass="navigation__page-nav-link--active"
+                to=""
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navigation__page-nav-link"
+                onClick={() => showMenu && setShowMenu(false)}
+              >
                 Kontakt
               </Scroll>
             </li>
@@ -56,8 +96,8 @@ export const Navigation = () => {
             <li>
               <Link
                 className={classNames("navigation__auth-nav-link", {
-                "navigation__auth-nav-link_active": auth,
-              })}
+                  "navigation__auth-nav-link--active": auth,
+                })}
                 to={`/${!auth ? `logowanie` : `oddaj-rzeczy`}`}
               >
                 {!auth ? "Zaloguj" : "Oddaj rzeczy"}
@@ -67,8 +107,8 @@ export const Navigation = () => {
             <li>
               <Link
                 className={classNames("navigation__auth-nav-link", {
-                "navigation__auth-nav-link_active": !auth,
-              })}
+                  "navigation__auth-nav-link--active": !auth,
+                })}
                 to={`/${!auth ? "rejestracja" : "wylogowano"}`}
               >
                 {!auth ? "Załóż konto" : "Wyloguj"}
