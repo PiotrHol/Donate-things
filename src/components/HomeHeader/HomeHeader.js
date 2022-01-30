@@ -14,7 +14,7 @@ export const HomeHeader = () => {
                 <img src={decoration} className="home-header__img" alt="decoration" />
                 <div className="home-header__buttons">
                     <Link className="home-header__btn" to="/oddaj-rzeczy">Oddaj<br/>rzeczy</Link>
-                    <Link className="home-header__btn" to="/">Zorganizuj<br/>zbiórkę</Link>
+                    <Link className="home-header__btn" to="/oddaj-rzeczy">Zorganizuj<br/>zbiórkę</Link>
                 </div>
             </div>
         </div>
