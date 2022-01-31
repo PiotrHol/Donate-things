@@ -26,10 +26,10 @@ export const Navigation = () => {
             <li>
               <Scroll
                 activeClass="navigation__page-nav-link--active"
-                to=""
+                to="start"
                 spy={true}
                 smooth={true}
-                duration={500}
+                duration={1000}
                 className="navigation__page-nav-link"
                 onClick={() => showMenu && setShowMenu(false)}
               >
@@ -39,10 +39,10 @@ export const Navigation = () => {
             <li>
               <Scroll
                 activeClass="navigation__page-nav-link--active"
-                to=""
+                to="whats-going-on"
                 spy={true}
                 smooth={true}
-                duration={500}
+                duration={1000}
                 className="navigation__page-nav-link"
                 onClick={() => showMenu && setShowMenu(false)}
               >

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const HomeHeader = () => {
     return (
-        <div className="home-header">
+        <div name="start" className="home-header">
             <Navigation />
             <div className="home-header__content">
                 <h2 className="home-header__text">Zacznij pomagać!</h2>

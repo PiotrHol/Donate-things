@@ -9,7 +9,7 @@ import arrows from "../../assets/Icon-4.svg";
 
 export const SimpleSteps = () => {
     return (
-        <div className="simple-steps">
+        <div name="whats-going-on" className="simple-steps">
             <h2 className="simple-steps__head">Wystarczą 4 proste kroki</h2>
             <img className="simple-steps__decoration" src={decoration} alt="decoration"/>
             <div className="simple-steps__steps">
