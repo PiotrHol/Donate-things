@@ -1,0 +1,123 @@
+@import "../../scss/main.scss";
+
+.simple-steps {
+    width: 100%;
+    padding: 50px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $colorWhite;
+    text-align: center;
+
+    @include mediaDesktop {
+        padding: 50px 0;
+    }
+
+    &__head {
+        font-size: 26px;
+        letter-spacing: -0.76px;
+        padding: 0 30px;
+
+        @include mediaMax {
+            font-size: 38px;
+        }
+    }
+
+    &__decoration {
+        padding: 30px;
+
+        @include mediaDesktop {
+            padding: 40px 30px;
+        }
+    }
+
+    &__steps {
+        width: 100%;
+        background: $colorGrayBg;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+
+        @include mediaDesktop {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        @include mediaMax {
+            width: 75%;
+        }
+    }
+
+    &__column {
+        width: 100%;
+        padding: 20px;
+
+        @include mediaDesktop {
+            width: calc(100% / 4);
+        }
+
+        @include mediaMax {
+            padding: 60px 20px;
+        }
+    }
+
+    &__icon {
+        width: 83px;
+        height: 83px;
+    }
+
+    &__icon-title {
+        font-size: 18px;
+        padding: 8px 0 17px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 70px;
+            background: $colorDarkGray;
+            opacity: 0.5;
+            margin-top: 10px;
+        }
+    }
+
+    &__description {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    &__link {
+        display: inline-block;
+        border: 0.75px solid $colorText;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 22px;
+        padding: 10px 45px;
+        margin-top: 30px;
+
+        @include mediaDesktop {
+            margin: 30px 0;
+            font-size: 27px;
+            line-height: 30px;
+            padding: 15px 60px;
+        }
+
+        @include mediaMax {
+            padding: 15px 80px;
+            font-size: 34px;
+            line-height: 38px;
+        }
+    }
+}
