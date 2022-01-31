@@ -3,6 +3,7 @@ import "./home.scss";
 import { HomeHeader } from "../HomeHeader/HomeHeader";
 import { ThreeColumns } from "../ThreeColumns/ThreeColumns";
 import { SimpleSteps } from "../SimpleSteps/SimpleSteps";
+import { About } from "../About/About";
 
 export const Home = () => {
     return (
@@ -10,6 +11,7 @@ export const Home = () => {
             <HomeHeader />
             <ThreeColumns />
             <SimpleSteps />
+            <About />
         </div>
     );
 }
