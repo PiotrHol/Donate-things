@@ -1,0 +1,102 @@
+@import "../../scss/main.scss";
+
+.fundations {
+    width: 100%;
+    background: $colorWhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        font-size: 30px;
+        letter-spacing: -0.76px;
+        margin-top: 40px;
+
+        @include mediaMax {
+            font-size: 38px;
+            margin-top: 70px;
+        }
+    }
+
+    &__decoration {
+        width: 170px;
+        padding: 15px 0 25px 0;
+
+        @include mediaMax {
+            width: 240px;
+            padding: 26px 0 55px 0;
+        }
+    }
+
+    &__set-list {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 40px;
+
+        @include mediaDesktop {
+            width: 500px;
+        }
+
+        @include mediaMax {
+            width: 750px;
+            margin-bottom: 70px;
+        }
+    }
+
+    &__set-list-item {
+        font-size: 18px;
+        padding: 4px 2px;
+        cursor: pointer;
+
+        @include mediaTablet {
+            padding: 10px 15px;
+        }
+
+        @include mediaDesktop {
+            padding: 15px 25px;
+        }
+
+        @include mediaMax {
+            font-size: 22px;
+            padding: 15px 40px;
+        }
+
+        &--first {
+            padding: 13px 4px;
+
+            @include mediaTablet {
+                padding: 19px 15px;
+            }
+
+            @include mediaDesktop {
+                padding: 24px 25px;
+            }
+
+            @include mediaMax {
+                padding: 25px 40px;
+            }
+        }
+
+        &--active {
+            border: 0.75px solid $colorText;
+        }
+    }
+
+    &__loading {
+        font-size: 22px;
+        letter-spacing: -0.76px;
+        margin-bottom: 30px;
+
+        @include mediaDesktop {
+            margin-bottom: 70px;
+        }
+
+        @include mediaMax {
+            font-size: 30px;
+        }
+    }
+}
