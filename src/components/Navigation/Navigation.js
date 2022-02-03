@@ -65,10 +65,10 @@ export const Navigation = () => {
             <li>
               <Scroll
                 activeClass="navigation__page-nav-link--active"
-                to=""
+                to="who-we-help"
                 spy={true}
                 smooth={true}
-                duration={500}
+                duration={1000}
                 className="navigation__page-nav-link"
                 onClick={() => showMenu && setShowMenu(false)}
               >
