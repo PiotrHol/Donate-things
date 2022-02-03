@@ -1,0 +1,142 @@
+@import "../../scss/main.scss";
+
+.paginate-list {
+    width: 90%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mediaMax {
+        margin-bottom: 60px;
+    }
+
+    &__description {
+        text-align: center;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 20px;
+
+        @include mediaTablet {
+            width: 80%;
+        }
+
+        @include mediaDesktop {
+            width: 400px;
+        }
+
+        @include mediaMax {
+            width: 540px;
+            font-size: 18px;
+            line-height: 26px;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__list {
+        width: 100%;
+        font-family: $font-alt;
+        font-weight: 300;
+
+        @include mediaDesktop {
+            width: 90%;
+        }
+
+        @include mediaFull {
+            width: 1200px;
+        }
+    }
+
+    &__list-item {
+        padding: 10px 0;
+        border-bottom: 1px solid $colorPaginationBorder;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @include mediaTablet {
+            padding: 15px 0;
+        }
+
+        @include mediaDesktop {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5px;
+        }
+
+        @include mediaMax {
+            padding: 30px 5px;
+        }
+    }
+
+    &__list-left-content {
+        @include mediaDesktop {
+            width: 60%;
+        }
+    }
+
+    &__list-name {
+        font-size: 18px;
+        margin-bottom: 6px;
+
+        @include mediaMax {
+            font-size: 20px;
+        }
+    }
+
+    &__list-purpose {
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 10px;
+
+        @include mediaDesktop {
+            margin-bottom: 0;
+        }
+
+        @include mediaMax {
+            font-size: 13px;
+            line-height: 17px;
+        }
+    }
+
+    &__list-description {
+        font-size: 12px;
+        line-height: 16px;
+
+        @include mediaDesktop {
+            width: 39%;
+            text-align: right;
+        }
+
+        @include mediaMax {
+            font-size: 13px;
+            line-height: 17px;
+        }
+    }
+
+    &__pagination {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__pagination-item {
+        font-size: 14px;
+        padding: 10px;
+        margin: 0 8px;
+        cursor: pointer;
+
+        @include mediaMax {
+            font-size: 16px;
+            padding: 12px;
+            margin: 0 10px;
+        }
+
+        &--active {
+            border: 1px solid $colorPaginationBorder;
+        }
+    }
+}
