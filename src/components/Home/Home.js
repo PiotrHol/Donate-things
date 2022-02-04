@@ -5,6 +5,7 @@ import { ThreeColumns } from "../ThreeColumns/ThreeColumns";
 import { SimpleSteps } from "../SimpleSteps/SimpleSteps";
 import { About } from "../About/About";
 import { Fundations } from "../Fundations/Fundations";
+import { Contact } from "../Contact/Contact";
 
 export const Home = () => {
     return (
@@ -14,6 +15,7 @@ export const Home = () => {
             <SimpleSteps />
             <About />
             <Fundations />
+            <Contact />
         </div>
     );
 }
