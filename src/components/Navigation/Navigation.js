@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
 import classNames from "classnames";
 
-export const Navigation = () => {
+export const Navigation = ({ inHomePage }) => {
   const [showMenu, setShowMenu] = useState(false);
   const auth = false;
 
@@ -24,17 +24,23 @@ export const Navigation = () => {
         <nav className="navigation__nav">
           <ul className="navigation__page-nav">
             <li>
-              <Scroll
-                activeClass="navigation__page-nav-link--active"
-                to="start"
-                spy={true}
-                smooth={true}
-                duration={1000}
-                className="navigation__page-nav-link"
-                onClick={() => showMenu && setShowMenu(false)}
-              >
-                Start
-              </Scroll>
+              {inHomePage ? (
+                <Scroll
+                  activeClass="navigation__page-nav-link--active"
+                  to="start"
+                  spy={true}
+                  smooth={true}
+                  duration={1000}
+                  className="navigation__page-nav-link"
+                  onClick={() => showMenu && setShowMenu(false)}
+                >
+                  Start
+                </Scroll>
+              ) : (
+                <Link className="navigation__page-nav-link" to="/">
+                  Start
+                </Link>
+              )}
             </li>
             <li>
               <Scroll

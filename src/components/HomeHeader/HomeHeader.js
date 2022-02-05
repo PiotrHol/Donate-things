@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const HomeHeader = () => {
     return (
         <div name="start" className="home-header">
-            <Navigation />
+            <Navigation inHomePage={true}/>
             <div className="home-header__content">
                 <h2 className="home-header__text">Zacznij pomagać!</h2>
                 <h2 className="home-header__text">Oddaj niechciane rzeczy w zaufane ręce</h2>
