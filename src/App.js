@@ -4,6 +4,7 @@ import { Home } from "./components/Home/Home";
 import "./scss/main.scss";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
+import { LogOut } from "./components/LogOut/LogOut";
 
 export const App = () => {
   return (
@@ -20,7 +21,7 @@ export const App = () => {
             <SignUp />
           </Route>
           <Route path="/wylogowano">
-            Wylogowano
+            <LogOut />
           </Route>
           <PrivateRouter path="/oddaj-rzeczy">
             Formularz
