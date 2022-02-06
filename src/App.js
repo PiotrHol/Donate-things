@@ -3,6 +3,7 @@ import { PrivateRouter } from "./PrivateRouter";
 import { Home } from "./components/Home/Home";
 import "./scss/main.scss";
 import { Login } from "./components/Login/Login";
+import { SignUp } from "./components/SignUp/SignUp";
 
 export const App = () => {
   return (
@@ -16,7 +17,7 @@ export const App = () => {
             <Login />
           </Route>
           <Route path="/rejestracja">
-            Rejestracja
+            <SignUp />
           </Route>
           <Route path="/wylogowano">
             Wylogowano
