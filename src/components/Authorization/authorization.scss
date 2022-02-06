@@ -1,0 +1,115 @@
+@import "../../scss/main.scss";
+
+.authorization {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mediaTablet {
+        width: 70%;
+    }
+
+    @include mediaDesktop {
+        width: 500px;
+    }
+
+    &__title {
+        font-size: 30px;
+        letter-spacing: -0.8px;
+
+        @include mediaMax {
+            font-size: 40px;
+        }
+    }
+
+    &__decoration {
+        width: 200px;
+        padding: 25px 0 30px 0;
+
+        @include mediaMax {
+            width: 250px;
+            padding: 25px 0 60px 0;
+        }
+    }
+
+    &__form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__form-content {
+        width: 100%;
+        background: $colorGrayBg;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 35px 0;
+
+        @include mediaDesktop {
+            width: 385px;
+        }
+
+        @include mediaMax {
+            padding: 40px 50px 10px;
+        }
+    }
+
+    &__form-label {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    &__form-input {
+        margin: 10px 0 30px 0;
+        font-size: 16px;
+        padding: 5px 0;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid $colorPaginationBorder;
+
+        &:focus {
+            border-color: $colorImportant;
+        }
+    }
+
+    &__form-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+
+        @include mediaTablet {
+            padding: 30px 0;
+        }
+
+        @include mediaMax {
+            padding: 40px 0;
+        }
+    }
+
+    &__form-btn {
+        display: block;
+        background: transparent;
+        border: none;
+        padding: 10px 12px;
+        font-family: $font-base;
+        font-weight: 300;
+        font-size: 18px;
+        cursor: pointer;
+
+        @include mediaMax {
+            padding: 13px 15px;
+        }
+
+        &--auth {
+            border: 0.75px solid $colorText;
+        }
+    }
+}
