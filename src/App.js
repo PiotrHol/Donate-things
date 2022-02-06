@@ -2,6 +2,7 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import { PrivateRouter } from "./PrivateRouter";
 import { Home } from "./components/Home/Home";
 import "./scss/main.scss";
+import { Login } from "./components/Login/Login";
 
 export const App = () => {
   return (
@@ -12,7 +13,7 @@ export const App = () => {
             <Home />
           </Route>
           <Route path="/logowanie">
-            Logowanie
+            <Login />
           </Route>
           <Route path="/rejestracja">
             Rejestracja

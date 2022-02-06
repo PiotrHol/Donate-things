@@ -1,0 +1,24 @@
+@import "./main.scss";
+
+.auth-page {
+    width: 100%;
+    height: 100vh;
+    background: $colorWhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+
+    &__auth-box {
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include mediaDesktop {
+            justify-content: center;
+            padding-bottom: 50px;
+        }
+    }
+}
