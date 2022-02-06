@@ -5,6 +5,7 @@ import facebook from "../../assets/Facebook.svg";
 import instagram from "../../assets/Instagram.svg";
 import { useForm } from "react-hook-form";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export const Contact = () => {
   const {
@@ -140,20 +141,20 @@ export const Contact = () => {
       <div className="contact__footer">
         <h3 className="contact__footer-title">Copyright by Coders Lab</h3>
         <div className="contact__footer-icons-box">
-          <a href="/">
+          <Link to="/">
             <img
               className="contact__footer-icon"
               src={facebook}
               alt="facebook"
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="contact__footer-icon"
               src={instagram}
               alt="instagram"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
