@@ -2,8 +2,23 @@ import React from "react";
 import "./authorization.scss";
 import decoration from "../../assets/Decoration.svg";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import classNames from "classnames";
 
 export const Authorization = ({ isSignUp, authBtnHandler }) => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <div className="authorization">
       <h2 className="authorization__title">
@@ -14,20 +29,70 @@ export const Authorization = ({ isSignUp, authBtnHandler }) => {
         src={decoration}
         alt="decoration"
       />
-      <form className="authorization__form">
+      <form className="authorization__form" onSubmit={handleSubmit(onSubmit)}>
         <div className="authorization__form-content">
           <label className="authorization__form-label">
             Email
-            <input className="authorization__form-input" type="text" />
+            <input
+              {...register("email", {
+                required: "Email jest wymagany!",
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: "Podany email jest nieprawidłowy!",
+                },
+              })}
+              className={classNames("authorization__form-input", {
+                "authorization__form-input--error": errors.email,
+              })}
+              type="text"
+            />
+            {errors.email && (
+              <p className="authorization__form-error">
+                {errors.email.message}
+              </p>
+            )}
           </label>
           <label className="authorization__form-label">
             Hasło
-            <input className="authorization__form-input" type="text" />
+            <input
+              {...register("password", {
+                required: "Hasło jest wymagane!",
+                minLength: {
+                  value: 6,
+                  message: "Podane hasło jest za krótkie!",
+                },
+              })}
+              className={classNames("authorization__form-input", {
+                "authorization__form-input--error": errors.password,
+              })}
+              type="password"
+            />
+            {errors.password && (
+              <p className="authorization__form-error">
+                {errors.password.message}
+              </p>
+            )}
           </label>
           {isSignUp && (
             <label className="authorization__form-label">
               Powtórz hasło
-              <input className="authorization__form-input" type="text" />
+              <input
+                {...register("password2", {
+                  required: "Ponownie wprowadź hasło!",
+                  validate: (value) =>
+                    value === watch("password") ||
+                    "Hasła muszą być takie same!",
+                })}
+                className={classNames("authorization__form-input", {
+                  "authorization__form-input--error": errors.password2,
+                })}
+                type="password"
+              />
+              {errors.password2 && (
+                <p className="authorization__form-error">
+                  {errors.password2.message}
+                </p>
+              )}
             </label>
           )}
         </div>
@@ -38,7 +103,10 @@ export const Authorization = ({ isSignUp, authBtnHandler }) => {
           >
             {isSignUp ? "Zaloguj się" : "Załóż konto"}
           </Link>
-          <button className="authorization__form-btn authorization__form-btn--auth">
+          <button
+            type="submit"
+            className="authorization__form-btn authorization__form-btn--auth"
+          >
             {isSignUp ? "Załóż konto" : "Zaloguj się"}
           </button>
         </div>

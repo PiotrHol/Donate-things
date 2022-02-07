@@ -63,19 +63,29 @@
         flex-direction: column;
         font-weight: 500;
         font-size: 16px;
+        padding: 10px 0 30px 0;
     }
 
     &__form-input {
-        margin: 10px 0 30px 0;
         font-size: 16px;
         padding: 5px 0;
         border: none;
         background: transparent;
         border-bottom: 1px solid $colorPaginationBorder;
 
+        &--error {
+            border-color: $colorRed;
+        }
+
         &:focus {
             border-color: $colorImportant;
         }
+    }
+
+    &__form-error {
+        color: $colorRed;
+        font-size: 16px;
+        padding-top: 10px;
     }
 
     &__form-buttons {
