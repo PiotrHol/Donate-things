@@ -5,8 +5,28 @@ import "./scss/main.scss";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
 import { LogOut } from "./components/LogOut/LogOut";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { setUserData, removeUserData } from "./actions/authActions";
+import { useEffect } from "react";
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
+      if (user) {
+        dispatch(setUserData(user.email));
+      }
+      else {
+        dispatch(removeUserData());
+      }
+    });
+
+    return () => unsubscribe()
+  }, [])
+  
+
   return (
     <HashRouter basename="/">
       <div className="app">
@@ -23,9 +43,7 @@ export const App = () => {
           <Route path="/wylogowano">
             <LogOut />
           </Route>
-          <PrivateRouter path="/oddaj-rzeczy">
-            Formularz
-          </PrivateRouter>
+          <PrivateRouter path="/oddaj-rzeczy">Strona w budowie</PrivateRouter>
           <Route path="*">
             <Redirect to="/" />
           </Route>
@@ -33,4 +51,4 @@ export const App = () => {
       </div>
     </HashRouter>
   );
-}
+};
