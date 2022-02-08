@@ -126,6 +126,15 @@
     &__auth-nav {
         color: $colorDarkGray;
 
+        &-element {
+            padding: 10px 0;
+
+            @include mediaDesktop {
+                padding: 0;
+                padding-right: 10px;
+            }
+        }
+
         &-link {
             display: block;
             padding: 10px 20px;
@@ -147,6 +156,7 @@
         @include mediaDesktop {
             font-size: 14px;
             display: flex;
+            align-items: center;
             padding-bottom: 15px;
         }
     }

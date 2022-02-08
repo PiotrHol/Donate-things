@@ -3,10 +3,16 @@ import "./navigation.scss";
 import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { getAuth, signOut } from "firebase/auth";
 
 export const Navigation = ({ inHomePage }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const auth = false;
+  const auth = useSelector(state => state.auth.id);
+
+  const signOutBtn = async () => {
+    await signOut(getAuth());
+  }
 
   return (
     <div className="navigation">
@@ -97,7 +103,7 @@ export const Navigation = ({ inHomePage }) => {
           </ul>
           <ul className="navigation__auth-nav">
             {auth && (
-              <li className="navigation__auth-nav-element">mail@gmail.com</li>
+              <li className="navigation__auth-nav-element">{`Cześć ${auth}`}</li>
             )}
             <li>
               <Link
@@ -115,6 +121,7 @@ export const Navigation = ({ inHomePage }) => {
                 className={classNames("navigation__auth-nav-link", {
                   "navigation__auth-nav-link--active": !auth,
                 })}
+                onClick={auth && signOutBtn}
                 to={`/${!auth ? "rejestracja" : "wylogowano"}`}
               >
                 {!auth ? "Załóż konto" : "Wyloguj"}
