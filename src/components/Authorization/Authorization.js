@@ -5,19 +5,13 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import classNames from "classnames";
 
-export const Authorization = ({ isSignUp, authBtnHandler }) => {
+export const Authorization = ({ isSignUp, onSubmit, loginError }) => {
   const {
     register,
     handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
-  };
 
   return (
     <div className="authorization">
@@ -94,6 +88,11 @@ export const Authorization = ({ isSignUp, authBtnHandler }) => {
                 </p>
               )}
             </label>
+          )}
+          {loginError && (
+            <p className="authorization__form-error authorization__form-login-error">
+              Wystąpił błąd! Spróbuj ponownie!
+            </p>
           )}
         </div>
         <div className="authorization__form-buttons">
