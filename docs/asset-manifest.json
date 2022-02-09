@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Donate-things/static/css/main.e0240716.css",
+    "main.js": "/Donate-things/static/js/main.0e0f3c36.js",
+    "static/media/Three-Columns-Background.png": "/Donate-things/static/media/Three-Columns-Background.54dcd134c6b5241e5fbc.png",
+    "static/media/Background-Contact-Form.jpg": "/Donate-things/static/media/Background-Contact-Form.655c54427d3b66427460.jpg",
+    "static/media/Form-Hero-Image.jpg": "/Donate-things/static/media/Form-Hero-Image.75cd77265f1736b72327.jpg",
+    "static/media/People.jpg": "/Donate-things/static/media/People.2fa041c6275e64cce5d4.jpg",
+    "static/media/Home-Hero-Image.jpg": "/Donate-things/static/media/Home-Hero-Image.0c4f237f9a7b8fab82f4.jpg",
+    "static/media/Icon-1.svg": "/Donate-things/static/media/Icon-1.bd3d092ac43eb92350ab3e628f58c6e3.svg",
+    "static/media/Instagram.svg": "/Donate-things/static/media/Instagram.5b663cf3d5105c75e2a282fac26f6d25.svg",
+    "static/media/Icon-4.svg": "/Donate-things/static/media/Icon-4.f1b3fb6d88016f0f95543cc7ad9a7803.svg",
+    "static/media/Icon-3.svg": "/Donate-things/static/media/Icon-3.564c1731a0ddca43e1da111146c460b0.svg",
+    "static/media/Facebook.svg": "/Donate-things/static/media/Facebook.1c1ea3aee560143f21d83ca5be58a379.svg",
+    "static/media/Icon-2.svg": "/Donate-things/static/media/Icon-2.cfac69a113268e131dcbb570c50c1251.svg",
+    "static/media/Signature.svg": "/Donate-things/static/media/Signature.8f2a001d56e8f7d883e166ac3cc69892.svg",
+    "static/media/Decoration.svg": "/Donate-things/static/media/Decoration.aad75271e33dd889f25b0e24a5e6c0b2.svg",
+    "index.html": "/Donate-things/index.html",
+    "main.e0240716.css.map": "/Donate-things/static/css/main.e0240716.css.map",
+    "main.0e0f3c36.js.map": "/Donate-things/static/js/main.0e0f3c36.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e0240716.css",
+    "static/js/main.0e0f3c36.js"
+  ]
+}
