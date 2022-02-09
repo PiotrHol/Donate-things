@@ -5,6 +5,7 @@ import "./scss/main.scss";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
 import { LogOut } from "./components/LogOut/LogOut";
+import { FormPage } from "./components/FormPage/FormPage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setUserData, removeUserData } from "./actions/authActions";
@@ -43,7 +44,9 @@ export const App = () => {
           <Route path="/wylogowano">
             <LogOut />
           </Route>
-          <PrivateRouter path="/oddaj-rzeczy">Strona w budowie</PrivateRouter>
+          <PrivateRouter path="/oddaj-rzeczy">
+            <FormPage />
+          </PrivateRouter>
           <Route path="*">
             <Redirect to="/" />
           </Route>
