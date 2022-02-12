@@ -1,0 +1,67 @@
+@import "../../scss/main.scss";
+
+.form-second-step {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include mediaDesktop {
+      height: 400px;
+  }
+
+  @include mediaMax {
+      height: 500px;
+  }
+
+  &__label {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+
+  &__label-text {
+    font-weight: 300;
+    font-size: 18px;
+    margin-right: 20px;
+
+    @include mediaMax {
+      font-size: 20px;
+    }
+  }
+
+  &__select {
+    width: 150px;   
+    margin-top: 20px;
+    background: transparent;
+    padding: 8px 10px;
+    font-family: $font-base;
+    font-weight: 300;
+    font-size: 18px;
+    border: 0.75px solid $colorText;
+
+    @include mediaTablet {
+        margin-top: 0;
+    }
+
+    @include mediaMax {
+        width: 300px;
+        font-size: 20px;
+    }
+  }
+
+  &__select-value {
+    background: $colorBodyBg;
+    padding: 8px 10px;
+    font-family: $font-base;
+    font-weight: 300;
+    font-size: 18px;
+
+    @include mediaMax {
+        font-size: 20px;
+    }
+  }
+}
