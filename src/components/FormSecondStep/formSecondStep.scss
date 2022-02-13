@@ -8,19 +8,19 @@
   justify-content: space-between;
 
   @include mediaDesktop {
-      height: 400px;
+    height: 400px;
   }
 
   @include mediaMax {
-      height: 500px;
+    height: 500px;
   }
 
   &__label {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   &__label-text {
@@ -33,35 +33,75 @@
     }
   }
 
-  &__select {
-    width: 150px;   
+  &__select-box {
+    width: 180px;
+    height: 40px;
     margin-top: 20px;
     background: transparent;
-    padding: 8px 10px;
-    font-family: $font-base;
     font-weight: 300;
     font-size: 18px;
     border: 0.75px solid $colorText;
+    position: relative;
+    display: grid;
+    grid-template-areas: "select";
+    align-items: flex-start;
+    padding: 5px 0 15px;
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 5px;
+      width: 47px;
+      height: 20px;
+      background-image: url("../../assets/Icon-Arrow-Down.svg");
+      background-size: cover;
+      grid-area: select;
+      justify-self: flex-end;
+
+      @include mediaDesktop {
+        margin-top: 0;
+        width: 57px;
+        height: 26px;
+      }
+    }
 
     @include mediaTablet {
-        margin-top: 0;
+      margin-top: 0;
     }
 
     @include mediaMax {
-        width: 300px;
-        font-size: 20px;
+      width: 300px;
+      font-size: 20px;
     }
+  }
+
+  &__select {
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    position: relative;
+    z-index: 1;
+    padding: 0 0 10px 10px;
+    grid-area: select;
+    cursor: pointer;
+
   }
 
   &__select-value {
     background: $colorBodyBg;
-    padding: 8px 10px;
     font-family: $font-base;
     font-weight: 300;
     font-size: 18px;
 
     @include mediaMax {
-        font-size: 20px;
+      font-size: 20px;
     }
   }
 }

@@ -20,15 +20,36 @@ export const FormSecondStep = () => {
           </h2>
           <div className="form-second-step">
             <label className="form-second-step__label">
-                <p className="form-second-step__label-text">Liczba 60l worków:</p>
-                <select className="form-second-step__select" defaultValue="choose">
-                    <option className="form-second-step__select-value" hidden value="choose">— wybierz —</option>
-                    <option className="form-second-step__select-value" value={1}>1</option>
-                    <option className="form-second-step__select-value" value={2}>2</option>
-                    <option className="form-second-step__select-value" value={3}>3</option>
-                    <option className="form-second-step__select-value" value={4}>4</option>
-                    <option className="form-second-step__select-value" value={5}>5</option>
+              <p className="form-second-step__label-text">Liczba 60l worków:</p>
+              <div className="form-second-step__select-box">
+                <select
+                  className="form-second-step__select"
+                  defaultValue="choose"
+                >
+                  <option
+                    className="form-second-step__select-value"
+                    hidden
+                    value="choose"
+                  >
+                    — wybierz —
+                  </option>
+                  <option className="form-second-step__select-value" value={1}>
+                    1
+                  </option>
+                  <option className="form-second-step__select-value" value={2}>
+                    2
+                  </option>
+                  <option className="form-second-step__select-value" value={3}>
+                    3
+                  </option>
+                  <option className="form-second-step__select-value" value={4}>
+                    4
+                  </option>
+                  <option className="form-second-step__select-value" value={5}>
+                    5
+                  </option>
                 </select>
+              </div>
             </label>
             <div className="form-content__form-btn-wrapper">
               <button className="form-content__form-btn">Wstecz</button>
