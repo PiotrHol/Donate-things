@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../FormContent/formContent.scss";
 import "./formSecondStep.scss";
+import classNames from "classnames";
 
 export const FormSecondStep = () => {
+  const [isSelectMenu, setIsSelectMenu] = useState(false);
+  const [selectValue, setSelectValue] = useState("— wybierz —");
+
+  const selectHandle = (event) => {
+    setSelectValue(event.target.value);
+    setIsSelectMenu(false);
+  };
+
   return (
     <div className="form-content">
       <div className="form-content__important">
@@ -22,33 +31,57 @@ export const FormSecondStep = () => {
             <label className="form-second-step__label">
               <p className="form-second-step__label-text">Liczba 60l worków:</p>
               <div className="form-second-step__select-box">
-                <select
+                <div
                   className="form-second-step__select"
-                  defaultValue="choose"
+                  onClick={() => setIsSelectMenu((prev) => !prev)}
                 >
-                  <option
-                    className="form-second-step__select-value"
-                    hidden
-                    value="choose"
-                  >
-                    — wybierz —
-                  </option>
-                  <option className="form-second-step__select-value" value={1}>
-                    1
-                  </option>
-                  <option className="form-second-step__select-value" value={2}>
-                    2
-                  </option>
-                  <option className="form-second-step__select-value" value={3}>
-                    3
-                  </option>
-                  <option className="form-second-step__select-value" value={4}>
-                    4
-                  </option>
-                  <option className="form-second-step__select-value" value={5}>
-                    5
-                  </option>
-                </select>
+                  <p>{selectValue}</p>
+                  <span
+                    className={classNames("form-second-step__select-arrow", {
+                      "form-second-step__select-arrow--down": !isSelectMenu,
+                      "form-second-step__select-arrow--up": isSelectMenu,
+                    })}
+                  />
+                </div>
+                {isSelectMenu && (
+                  <ul className="form-second-step__select-list">
+                    <li
+                      className="form-second-step__select-value"
+                      value={1}
+                      onClick={selectHandle}
+                    >
+                      1
+                    </li>
+                    <li
+                      className="form-second-step__select-value"
+                      value={2}
+                      onClick={selectHandle}
+                    >
+                      2
+                    </li>
+                    <li
+                      className="form-second-step__select-value"
+                      value={3}
+                      onClick={selectHandle}
+                    >
+                      3
+                    </li>
+                    <li
+                      className="form-second-step__select-value"
+                      value={4}
+                      onClick={selectHandle}
+                    >
+                      4
+                    </li>
+                    <li
+                      className="form-second-step__select-value"
+                      value={5}
+                      onClick={selectHandle}
+                    >
+                      5
+                    </li>
+                  </ul>
+                )}
               </div>
             </label>
             <div className="form-content__form-btn-wrapper">
