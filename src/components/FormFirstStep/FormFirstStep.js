@@ -2,16 +2,24 @@ import React from "react";
 import "../FormContent/formContent.scss";
 import "./formFirstStep.scss";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { changePage, setThings } from "../../actions/formActions";
 
 export const FormFirstStep = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      things: useSelector((state) => state.form.things),
+    },
+  });
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data.things);
+    dispatch(setThings(data.things));
+    dispatch(changePage(2));
   };
   return (
     <div className="form-content">
@@ -81,7 +89,11 @@ export const FormFirstStep = () => {
               <span className="form-first-step__span" />
               <p className="form-first-step__label-text">Inne</p>
             </label>
-            {errors.things && <p className="form-content__form-error">Wybierz co chcesz oddać!</p>}
+            {errors.things && (
+              <p className="form-content__form-error">
+                Wybierz co chcesz oddać!
+              </p>
+            )}
             <button className="form-content__form-btn" type="submit">
               Dalej
             </button>

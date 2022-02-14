@@ -1,5 +1,6 @@
 const actionsType = {
   pageChange: "form/pageChange",
+  thingsSet: "form/thingsSet",
 };
 
 const changePage = (payload) => {
@@ -9,4 +10,11 @@ const changePage = (payload) => {
   };
 };
 
-export { actionsType, changePage };
+const setThings = (payload) => {
+  return {
+    type: actionsType.thingsSet,
+    payload,
+  };
+};
+
+export { actionsType, changePage, setThings };
