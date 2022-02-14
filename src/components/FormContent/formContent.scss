@@ -132,6 +132,10 @@
     }
   }
 
+  &__form-error {
+    color: $colorRed;
+  }
+
   &__form-btn-wrapper {
     width: 220px;
     display: flex;
