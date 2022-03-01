@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import "../FormContent/formContent.scss";
 import "./formSecondStep.scss";
 import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { changePage } from "../../actions/formActions";
 
 export const FormSecondStep = () => {
   const [isSelectMenu, setIsSelectMenu] = useState(false);
   const [selectValue, setSelectValue] = useState("— wybierz —");
+  const dispatch = useDispatch();
 
   const selectHandle = (event) => {
     setSelectValue(event.target.value);
@@ -85,7 +88,7 @@ export const FormSecondStep = () => {
               </div>
             </label>
             <div className="form-content__form-btn-wrapper">
-              <button className="form-content__form-btn">Wstecz</button>
+              <button className="form-content__form-btn" type="button" onClick={() => dispatch(changePage(1))}>Wstecz</button>
               <button className="form-content__form-btn" type="submit">
                 Dalej
               </button>
