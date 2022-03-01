@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../scss/authPage.scss";
 import { Navigation } from "../Navigation/Navigation";
 import { Authorization } from "../Authorization/Authorization";
@@ -10,11 +10,19 @@ import {
   browserSessionPersistence,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useSelector } from "react-redux";
 
 export const Login = () => {
   const [loginError, setLoginError] = useState(false);
   const history = useHistory();
   const { reset } = useForm();
+  const auth = useSelector(state => state.auth.id);
+  
+  useEffect(() => {
+    if (auth) {
+      history.push("/");
+    }
+  }, [auth])
 
   const logInHandler = ({ email, password }) => {
     const auth = getAuth();
@@ -22,7 +30,6 @@ export const Login = () => {
     setPersistence(auth, browserSessionPersistence).then(async () => {
       try {
         await signInWithEmailAndPassword(auth, email, password);
-        history.push("/");
       } catch {
         setLoginError(true);
       }
