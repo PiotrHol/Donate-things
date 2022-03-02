@@ -56,7 +56,7 @@ export const FormSecondStep = () => {
             <label className="form-second-step__label">
               <p className="form-second-step__label-text">Liczba 60l worków:</p>
               <select
-                className="form-second-step__default-select"
+                className="form-content__default-select"
                 {...register("bags", {
                   min: {
                     value: 1,
@@ -71,25 +71,25 @@ export const FormSecondStep = () => {
                   </option>
                 ))}
               </select>
-              <div className="form-second-step__select-box">
+              <div className="form-content__select-box">
                 <div
-                  className="form-second-step__select"
+                  className="form-content__select"
                   onClick={() => setIsSelectMenu((prev) => !prev)}
                 >
                   <p>{selectValue}</p>
                   <span
-                    className={classNames("form-second-step__select-arrow", {
-                      "form-second-step__select-arrow--down": !isSelectMenu,
-                      "form-second-step__select-arrow--up": isSelectMenu,
+                    className={classNames("form-content__select-arrow", {
+                      "form-content__select-arrow--down": !isSelectMenu,
+                      "form-content__select-arrow--up": isSelectMenu,
                     })}
                   />
                 </div>
                 {isSelectMenu && (
-                  <ul className="form-second-step__select-list">
+                  <ul className="form-content__select-list">
                     {selectOptions.map((option) => (
                       <li
                         key={option}
-                        className="form-second-step__select-value"
+                        className="form-content__select-value"
                         value={option}
                         onClick={selectHandle}
                       >
