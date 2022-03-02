@@ -4,15 +4,32 @@ import "./formSecondStep.scss";
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
 import { changePage } from "../../actions/formActions";
+import { useForm } from "react-hook-form";
 
 export const FormSecondStep = () => {
   const [isSelectMenu, setIsSelectMenu] = useState(false);
   const [selectValue, setSelectValue] = useState("— wybierz —");
   const dispatch = useDispatch();
+  const selectOptions = [1, 2, 3, 4, 5];
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      bags: 0,
+    },
+  });
 
   const selectHandle = (event) => {
     setSelectValue(event.target.value);
     setIsSelectMenu(false);
+    setValue("bags", event.target.value);
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
@@ -25,7 +42,7 @@ export const FormSecondStep = () => {
         </p>
       </div>
       <div className="form-content__main">
-        <form className="form-content__form">
+        <form className="form-content__form" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="form-content__form-step">Krok 2/4</h3>
           <h2 className="form-content__form-title">
             Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
@@ -33,6 +50,22 @@ export const FormSecondStep = () => {
           <div className="form-second-step">
             <label className="form-second-step__label">
               <p className="form-second-step__label-text">Liczba 60l worków:</p>
+              <select
+                className="form-second-step__default-select"
+                {...register("bags", {
+                  min: {
+                    value: 1,
+                    message: "Podaj liczbę worków!",
+                  },
+                })}
+              >
+                <option value={0}>0</option>
+                {selectOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
               <div className="form-second-step__select-box">
                 <div
                   className="form-second-step__select"
@@ -48,50 +81,38 @@ export const FormSecondStep = () => {
                 </div>
                 {isSelectMenu && (
                   <ul className="form-second-step__select-list">
-                    <li
-                      className="form-second-step__select-value"
-                      value={1}
-                      onClick={selectHandle}
-                    >
-                      1
-                    </li>
-                    <li
-                      className="form-second-step__select-value"
-                      value={2}
-                      onClick={selectHandle}
-                    >
-                      2
-                    </li>
-                    <li
-                      className="form-second-step__select-value"
-                      value={3}
-                      onClick={selectHandle}
-                    >
-                      3
-                    </li>
-                    <li
-                      className="form-second-step__select-value"
-                      value={4}
-                      onClick={selectHandle}
-                    >
-                      4
-                    </li>
-                    <li
-                      className="form-second-step__select-value"
-                      value={5}
-                      onClick={selectHandle}
-                    >
-                      5
-                    </li>
+                    {selectOptions.map((option) => (
+                      <li
+                        key={option}
+                        className="form-second-step__select-value"
+                        value={option}
+                        onClick={selectHandle}
+                      >
+                        {option}
+                      </li>
+                    ))}
                   </ul>
                 )}
               </div>
             </label>
-            <div className="form-content__form-btn-wrapper">
-              <button className="form-content__form-btn" type="button" onClick={() => dispatch(changePage(1))}>Wstecz</button>
-              <button className="form-content__form-btn" type="submit">
-                Dalej
-              </button>
+            <div className="form-second-step__buttons">
+              {errors.bags && (
+                <p className="form-content__form-error">
+                  {errors.bags.message}
+                </p>
+              )}
+              <div className="form-content__form-btn-wrapper">
+                <button
+                  className="form-content__form-btn"
+                  type="button"
+                  onClick={() => dispatch(changePage(1))}
+                >
+                  Wstecz
+                </button>
+                <button className="form-content__form-btn" type="submit">
+                  Dalej
+                </button>
+              </div>
             </div>
           </div>
         </form>

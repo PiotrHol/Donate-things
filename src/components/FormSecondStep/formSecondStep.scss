@@ -40,6 +40,10 @@
     }
   }
 
+  &__default-select {
+    display: none;
+  }
+
   &__select-box {
     width: auto;
     background: transparent;
@@ -98,5 +102,9 @@
   &__select-value {
     padding: 5px 0;
     cursor: pointer;
+  }
+
+  &__buttons {
+    width: 100%;
   }
 }
