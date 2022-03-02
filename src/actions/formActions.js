@@ -1,6 +1,7 @@
 const actionsType = {
   pageChange: "form/pageChange",
   thingsSet: "form/thingsSet",
+  bagsSet: "form/bagsSet",
 };
 
 const changePage = (payload) => {
@@ -17,4 +18,11 @@ const setThings = (payload) => {
   };
 };
 
-export { actionsType, changePage, setThings };
+const setBags = (payload) => {
+  return {
+    type: actionsType.bagsSet,
+    payload,
+  };
+};
+
+export { actionsType, changePage, setThings, setBags };
