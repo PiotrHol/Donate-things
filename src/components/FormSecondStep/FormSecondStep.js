@@ -3,12 +3,16 @@ import "../FormContent/formContent.scss";
 import "./formSecondStep.scss";
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
-import { changePage } from "../../actions/formActions";
+import { changePage, setBags } from "../../actions/formActions";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 export const FormSecondStep = () => {
+  const numberOfBags = useSelector((state) => state.form.bags);
   const [isSelectMenu, setIsSelectMenu] = useState(false);
-  const [selectValue, setSelectValue] = useState("— wybierz —");
+  const [selectValue, setSelectValue] = useState(
+    numberOfBags ? numberOfBags : "— wybierz —"
+  );
   const dispatch = useDispatch();
   const selectOptions = [1, 2, 3, 4, 5];
   const {
@@ -18,7 +22,7 @@ export const FormSecondStep = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      bags: 0,
+      bags: numberOfBags,
     },
   });
 
@@ -28,8 +32,9 @@ export const FormSecondStep = () => {
     setValue("bags", event.target.value);
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ bags }) => {
+    dispatch(setBags(bags));
+    console.log(bags);
   };
 
   return (
