@@ -1,0 +1,152 @@
+@import "../../scss/main.scss";
+
+.form-third-step {
+  width: 100%;
+  position: relative;
+
+  &__main {
+    height: 600px;
+
+    @include mediaTablet {
+      height: 560px;
+    }
+
+    @include mediaDesktop {
+      height: auto;
+      background-position-x: -330px;
+    }
+
+    @include mediaMax {
+      background-position-x: -300px;
+    }
+
+    @include mediaFull {
+      background-position-x: -70px;
+    }
+
+    &::before {
+      height: 600px;
+      background-position-x: -650px;
+
+      @include mediaTablet {
+        background-position-x: -500px;
+      }
+    }
+  }
+
+  &__select-box {
+    align-items: flex-start;
+  }
+
+  &__select-list {
+    width: 180px;
+    text-align: left;
+    padding-left: 10px;
+    position: absolute;
+    top: 95px;
+    background: $colorBodyBg;
+
+    @include mediaMax {
+        width: 300px;
+        top: 125px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 20px;
+
+    @include mediaMax {
+      margin-top: 50px;
+      font-size: 24px;
+    }
+  }
+
+  &__checkbox {
+    width: 100%;
+    padding: 15px 0 0px 0;
+
+    @include mediaDesktop {
+      padding: 20px 0 0px 0;
+    }
+
+    @include mediaMax {
+      width: 90%;
+    }
+  }
+
+  &__checkbox-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__checkbox-list-item {
+    border: 0.75px solid $colorText;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    @include mediaDesktop {
+      margin-right: 25px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__checkbox-input {
+    display: none;
+
+    &:checked ~ .form-third-step__checkbox-text {
+      background: $colorImportant;
+    }
+  }
+
+  &__checkbox-text {
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    @include mediaDesktop {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+
+    @include mediaMax {
+      font-size: 20px;
+    }
+  }
+
+  &__text-input {
+    background: transparent;
+    border: 0.75px solid $colorText;
+    outline: none;
+    font-family: $font-base;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 5px;
+    width: 100%;
+    margin-top: 20px;
+
+    @include mediaTablet {
+      width: 80%;
+    }
+
+    @include mediaDesktop {
+      width: 90%;
+      font-size: 18px;
+    }
+
+    @include mediaMax {
+      width: 500px;
+      font-size: 20px;
+      padding: 8px;
+    }
+
+    @include mediaFull {
+      width: 570px;
+    }
+
+    &:focus {
+      border-color: $colorImportant;
+    }
+  }
+}
