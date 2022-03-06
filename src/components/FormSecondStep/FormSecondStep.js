@@ -34,7 +34,7 @@ export const FormSecondStep = () => {
 
   const onSubmit = ({ bags }) => {
     dispatch(setBags(bags));
-    console.log(bags);
+    dispatch(changePage(3));
   };
 
   return (
