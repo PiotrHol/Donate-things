@@ -134,6 +134,11 @@
 
   &__form-error {
     color: $colorRed;
+    font-size: 14px;
+
+    @include mediaDesktop {
+      font-size: 16px;
+    }
   }
 
   &__form-btn-wrapper {

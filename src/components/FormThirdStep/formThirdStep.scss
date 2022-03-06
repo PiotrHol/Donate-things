@@ -5,10 +5,10 @@
   position: relative;
 
   &__main {
-    height: 600px;
+    height: 640px;
 
     @include mediaTablet {
-      height: 560px;
+      height: 600px;
     }
 
     @include mediaDesktop {
@@ -25,7 +25,7 @@
     }
 
     &::before {
-      height: 600px;
+      height: 640px;
       background-position-x: -650px;
 
       @include mediaTablet {
@@ -147,6 +147,14 @@
 
     &:focus {
       border-color: $colorImportant;
+    }
+  }
+
+  &__error {
+    margin-top: 10px;
+
+    @include mediaDesktop {
+      margin-top: 20px;
     }
   }
 }

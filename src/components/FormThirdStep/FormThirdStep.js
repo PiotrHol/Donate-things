@@ -4,6 +4,7 @@ import "./formThirdStep.scss";
 import { useDispatch } from "react-redux";
 import { changePage } from "../../actions/formActions";
 import classNames from "classnames";
+import { useForm } from "react-hook-form";
 
 export const FormThirdStep = () => {
   const dispatch = useDispatch();
@@ -17,10 +18,24 @@ export const FormThirdStep = () => {
     "niepełnosprawnym",
     "osobom starszym",
   ];
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const selectHandle = (city) => {
     setSelectValue(city);
     setIsSelectMenu(false);
+    setValue("city", city);
+  };
+
+  const onSubmit = ({city, organization, whoToHelp}) => {
+    console.log(city);
+    console.log(organization);
+    console.log(whoToHelp);
   };
 
   return (
@@ -34,12 +49,20 @@ export const FormThirdStep = () => {
         </p>
       </div>
       <div className="form-content__main form-third-step__main">
-        <form className="form-content__form">
+        <form className="form-content__form" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="form-content__form-step">Krok 3/4</h3>
           <div className="form-third-step">
             <h2 className="form-content__form-title">Lokalizacja:</h2>
-            <select className="form-content__default-select">
-              <option value="brak">0</option>
+            <select
+              className="form-content__default-select"
+              {...register("city", {
+                validate: (value) =>
+                  watch("organization").length > 0 ||
+                  value.length > 1 ||
+                  "Wybierz miasto lub wpisz nazwę organizacji!",
+              })}
+            >
+              <option value="0">0</option>
               {selectOptions.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -73,6 +96,9 @@ export const FormThirdStep = () => {
                 </ul>
               )}
             </div>
+            {errors.city && (
+              <p className="form-content__form-error form-third-step__error">{errors.city.message}</p>
+            )}
             <h3 className="form-third-step__title">Komu chcesz pomóc?</h3>
             <div className="form-third-step__checkbox">
               <ul className="form-third-step__checkbox-list">
@@ -85,18 +111,33 @@ export const FormThirdStep = () => {
                       <input
                         type="checkbox"
                         className="form-third-step__checkbox-input"
+                        value={who}
+                        {...register(`whoToHelp.${index}`, {
+                          validate: () =>
+                            watch("whoToHelp").some((value) => value),
+                        })}
                       />
                       <p className="form-third-step__checkbox-text">{who}</p>
                     </label>
                   </li>
                 ))}
               </ul>
+              {errors.whoToHelp && (
+                <p className="form-content__form-error">
+                  Wybierz przynajmniej jedną grupę osób!
+                </p>
+              )}
             </div>
             <label>
               <h3 className="form-third-step__title">
                 Wpisz nazwę konkretnej organizacji (opcjonalnie)
               </h3>
-              <input className="form-third-step__text-input" type="text" />
+              <input
+                className="form-third-step__text-input"
+                type="text"
+                maxLength={30}
+                {...register("organization")}
+              />
             </label>
             <div className="form-content__form-btn-wrapper">
               <button
