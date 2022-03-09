@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "../FormContent/formContent.scss";
 import "./formThirdStep.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../../actions/formActions";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
+import { setLocation, setOrganization } from "../../actions/formActions";
 
 export const FormThirdStep = () => {
+  const location = useSelector((state) => state.form.location);
+  const organizationName = useSelector((state) => state.form.organization);
   const dispatch = useDispatch();
   const [isSelectMenu, setIsSelectMenu] = useState(false);
-  const [selectValue, setSelectValue] = useState("— wybierz —");
+  const [selectValue, setSelectValue] = useState(
+    organizationName || location === "0" ? "— wybierz —" : location
+  );
   const selectOptions = ["Poznań", "Warszawa", "Kraków", "Wrocław", "Katowice"];
   const whoIsSupporting = [
     "dzieciom",
@@ -24,7 +29,12 @@ export const FormThirdStep = () => {
     setValue,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      city: location,
+      organization: organizationName,
+    },
+  });
 
   const selectHandle = (city) => {
     setSelectValue(city);
@@ -32,10 +42,17 @@ export const FormThirdStep = () => {
     setValue("city", city);
   };
 
-  const onSubmit = ({city, organization, whoToHelp}) => {
+  const onSubmit = ({ city, organization, whoToHelp }) => {
     console.log(city);
     console.log(organization);
     console.log(whoToHelp);
+    if (organization) {
+      dispatch(setOrganization(organization));
+      dispatch(setLocation("0"));
+    } else {
+      dispatch(setLocation(city));
+      dispatch(setOrganization(""));
+    }
   };
 
   return (
@@ -97,7 +114,9 @@ export const FormThirdStep = () => {
               )}
             </div>
             {errors.city && (
-              <p className="form-content__form-error form-third-step__error">{errors.city.message}</p>
+              <p className="form-content__form-error form-third-step__error">
+                {errors.city.message}
+              </p>
             )}
             <h3 className="form-third-step__title">Komu chcesz pomóc?</h3>
             <div className="form-third-step__checkbox">
