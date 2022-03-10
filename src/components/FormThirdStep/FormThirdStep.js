@@ -5,11 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../../actions/formActions";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
-import { setLocation, setOrganization } from "../../actions/formActions";
+import {
+  setLocation,
+  setOrganization,
+  setWhoIsAssistance,
+} from "../../actions/formActions";
 
 export const FormThirdStep = () => {
   const location = useSelector((state) => state.form.location);
   const organizationName = useSelector((state) => state.form.organization);
+  const whoIsAssistance = useSelector((state) => state.form.whoIsAssistance);
   const dispatch = useDispatch();
   const [isSelectMenu, setIsSelectMenu] = useState(false);
   const [selectValue, setSelectValue] = useState(
@@ -32,6 +37,9 @@ export const FormThirdStep = () => {
   } = useForm({
     defaultValues: {
       city: location,
+      whoToHelp: whoIsAssistance.length
+        ? whoIsAssistance
+        : [...whoIsSupporting].fill(false),
       organization: organizationName,
     },
   });
@@ -43,9 +51,6 @@ export const FormThirdStep = () => {
   };
 
   const onSubmit = ({ city, organization, whoToHelp }) => {
-    console.log(city);
-    console.log(organization);
-    console.log(whoToHelp);
     if (organization) {
       dispatch(setOrganization(organization));
       dispatch(setLocation("0"));
@@ -53,6 +58,7 @@ export const FormThirdStep = () => {
       dispatch(setLocation(city));
       dispatch(setOrganization(""));
     }
+    dispatch(setWhoIsAssistance(whoToHelp));
   };
 
   return (
