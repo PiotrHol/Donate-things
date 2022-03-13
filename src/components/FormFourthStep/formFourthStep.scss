@@ -1,0 +1,122 @@
+@import "../../scss/main.scss";
+
+.form-fourth-step {
+  width: 100%;
+
+  &__main {
+    height: 970px;
+
+    &::before {
+      height: inherit;
+      background-position-x: -1200px;
+
+      @include mediaTablet {
+        background-position-x: -700px;
+      }
+    }
+
+    @include mediaTablet {
+      height: 760px;
+    }
+
+    @include mediaDesktop {
+      height: auto;
+      background-position-x: -550px;
+    }
+
+    @include mediaMax {
+      background-position-x: -500px;
+    }
+
+    @include mediaFull {
+      background-position-x: 50px;
+    }
+  }
+
+  &__column-wrapper {
+    width: 100%;
+
+    @include mediaFull {
+      display: flex;
+    }
+  }
+
+  &__column {
+    width: 100%;
+    font-size: 18px;
+
+    @include mediaMax {
+      font-size: 22px;
+    }
+
+    &:last-child {
+      margin-top: 10px;
+
+      @include mediaMax {
+        margin-top: 20px;
+      }
+
+      @include mediaFull {
+        margin-top: 0;
+        margin-left: 30px;
+      }
+    }
+  }
+
+  &__column-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+
+    @include mediaMax {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__label {
+    width: 100%;
+
+    @include mediaTablet {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include mediaFull {
+      padding: 14px 0;
+    }
+  }
+
+  &__label-area {
+    @include mediaTablet {
+      align-items: flex-start;
+    }
+  }
+
+  &__input-text {
+    font-weight: 300;
+  }
+
+  &__input {
+    font-size: 16px;
+    padding: 5px;
+    margin: 10px 0;
+    background: transparent;
+    outline: none;
+    border: none;
+    border: 0.75px solid $colorText;
+    color: $colorText;
+    font-weight: 300;
+    width: 100%;
+
+    @include mediaTablet {
+      width: 70%;
+      margin: 0;
+      margin-left: 10px;
+    }
+
+    @include mediaMax {
+      font-size: 20px;
+    }
+  }
+}
