@@ -59,6 +59,7 @@ export const FormThirdStep = () => {
       dispatch(setOrganization(""));
     }
     dispatch(setWhoIsAssistance(whoToHelp));
+    dispatch(changePage(4));
   };
 
   return (
