@@ -3,9 +3,15 @@ import "../FormContent/formContent.scss";
 import "./formFourthStep.scss";
 import { useDispatch } from "react-redux";
 import { changePage } from "../../actions/formActions";
+import { useForm } from "react-hook-form";
 
 export const FormFourthStep = () => {
   const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <div className="form-content">
@@ -16,7 +22,7 @@ export const FormFourthStep = () => {
         </p>
       </div>
       <div className="form-content__main form-fourth-step__main">
-        <form className="form-content__form">
+        <form className="form-content__form" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="form-content__form-step">Krok 4/4</h3>
           <h2 className="form-content__form-title">
             Podaj adres oraz termin odbioru rzeczy przez kuriera
@@ -29,19 +35,72 @@ export const FormFourthStep = () => {
                 </h3>
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">Ulica</p>
-                  <input className="form-fourth-step__input" type="text" />
+                  <input
+                    className="form-fourth-step__input"
+                    type="text"
+                    maxLength={30}
+                    {...register("street", {
+                      required: "Podaj ulicę z numerem domu/mieszkania!",
+                      minLength: {
+                        value: 2,
+                        message: "Nazwa ulicy jest za krótka!",
+                      },
+                    })}
+                  />
                 </label>
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">Miasto</p>
-                  <input className="form-fourth-step__input" type="text" />
+                  <input
+                    className="form-fourth-step__input"
+                    type="text"
+                    maxLength={20}
+                    {...register("city", {
+                      required: "Podaj miasto!",
+                      minLength: {
+                        value: 2,
+                        message: "Nazwa miasta jest za krótka!",
+                      },
+                    })}
+                  />
                 </label>
                 <label className="form-fourth-step__label">
-                  <p className="form-fourth-step__input-text">Kod<br />pocztowy</p>
-                  <input className="form-fourth-step__input" type="text" placeholder="__-___" />
+                  <p className="form-fourth-step__input-text">
+                    Kod
+                    <br />
+                    pocztowy
+                  </p>
+                  <input
+                    className="form-fourth-step__input"
+                    type="text"
+                    placeholder="__-___"
+                    maxLength={6}
+                    {...register("postCode", {
+                      required: "Kod pocztowy jest wymagany!",
+                      pattern: {
+                        value: /^[0-9]{2}-[0-9]{3}$/,
+                        message: "Podaj poprawny kod pocztowy!",
+                      },
+                    })}
+                  />
                 </label>
                 <label className="form-fourth-step__label">
-                  <p className="form-fourth-step__input-text">Numer<br />telefonu</p>
-                  <input className="form-fourth-step__input" type="text" />
+                  <p className="form-fourth-step__input-text">
+                    Numer
+                    <br />
+                    telefonu
+                  </p>
+                  <input
+                    className="form-fourth-step__input"
+                    type="text"
+                    maxLength={9}
+                    {...register("phone", {
+                      required: "Numer telefonu jest wymagany!",
+                      pattern: {
+                        value: /^[0-9]{9}$/,
+                        message: "Podaj numer telefonu!",
+                      },
+                    })}
+                  />
                 </label>
               </div>
               <div className="form-fourth-step__column">
@@ -50,15 +109,36 @@ export const FormFourthStep = () => {
                 </h3>
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">Data</p>
-                  <input className="form-fourth-step__input" type="date" />
+                  <input
+                    className="form-fourth-step__input"
+                    type="date"
+                    {...register("date", {
+                      required: "Wybierz datę odbioru!",
+                    })}
+                  />
                 </label>
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">Godzina</p>
-                  <input className="form-fourth-step__input" type="time" />
+                  <input
+                    className="form-fourth-step__input"
+                    type="time"
+                    {...register("time", {
+                      required: "Wybierz godzinę odbioru!",
+                    })}
+                  />
                 </label>
                 <label className="form-fourth-step__label form-fourth-step__label-area">
-                  <p className="form-fourth-step__input-text">Uwagi<br />dla kuriera</p>
-                  <textarea className="form-fourth-step__input" rows={4} />
+                  <p className="form-fourth-step__input-text">
+                    Uwagi
+                    <br />
+                    dla kuriera
+                  </p>
+                  <textarea
+                    className="form-fourth-step__input"
+                    rows={4}
+                    maxLength={100}
+                    {...register("note")}
+                  />
                 </label>
               </div>
             </div>
