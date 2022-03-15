@@ -31,6 +31,22 @@
     @include mediaFull {
       background-position-x: 50px;
     }
+
+    &--error {
+      height: 1060px;
+
+      @include mediaTablet {
+        height: 870px;
+
+        &::before {
+          background-position-x: -800px;
+        }
+      }
+
+      @include mediaDesktop {
+        height: auto;
+      }
+    }
   }
 
   &__column-wrapper {
@@ -116,7 +132,15 @@
     }
 
     @include mediaMax {
-      font-size: 20px;
+      font-size: 18px;
+    }
+  }
+
+  &__error {
+    margin-bottom: 5px;
+
+    @include mediaTablet {
+      margin-bottom: 5px;
     }
   }
 }

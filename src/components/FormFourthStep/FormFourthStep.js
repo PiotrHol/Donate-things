@@ -4,10 +4,15 @@ import "./formFourthStep.scss";
 import { useDispatch } from "react-redux";
 import { changePage } from "../../actions/formActions";
 import { useForm } from "react-hook-form";
+import classNames from "classnames";
 
 export const FormFourthStep = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -21,7 +26,11 @@ export const FormFourthStep = () => {
           Podaj adres oraz termin odbioru rzeczy.
         </p>
       </div>
-      <div className="form-content__main form-fourth-step__main">
+      <div
+        className={classNames("form-content__main", "form-fourth-step__main", {
+          "form-fourth-step__main--error": Object.keys(errors).length,
+        })}
+      >
         <form className="form-content__form" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="form-content__form-step">Krok 4/4</h3>
           <h2 className="form-content__form-title">
@@ -48,6 +57,11 @@ export const FormFourthStep = () => {
                     })}
                   />
                 </label>
+                {errors.street && (
+                  <p className="form-content__form-error form-fourth-step__error">
+                    {errors.street.message}
+                  </p>
+                )}
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">Miasto</p>
                   <input
@@ -63,6 +77,11 @@ export const FormFourthStep = () => {
                     })}
                   />
                 </label>
+                {errors.city && (
+                  <p className="form-content__form-error form-fourth-step__error">
+                    {errors.city.message}
+                  </p>
+                )}
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">
                     Kod
@@ -83,6 +102,11 @@ export const FormFourthStep = () => {
                     })}
                   />
                 </label>
+                {errors.postCode && (
+                  <p className="form-content__form-error form-fourth-step__error">
+                    {errors.postCode.message}
+                  </p>
+                )}
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">
                     Numer
@@ -97,11 +121,16 @@ export const FormFourthStep = () => {
                       required: "Numer telefonu jest wymagany!",
                       pattern: {
                         value: /^[0-9]{9}$/,
-                        message: "Podaj numer telefonu!",
+                        message: "Podaj poprawny numer telefonu!",
                       },
                     })}
                   />
                 </label>
+                {errors.phone && (
+                  <p className="form-content__form-error form-fourth-step__error">
+                    {errors.phone.message}
+                  </p>
+                )}
               </div>
               <div className="form-fourth-step__column">
                 <h3 className="form-fourth-step__column-title">
@@ -117,6 +146,11 @@ export const FormFourthStep = () => {
                     })}
                   />
                 </label>
+                {errors.date && (
+                  <p className="form-content__form-error form-fourth-step__error">
+                    {errors.date.message}
+                  </p>
+                )}
                 <label className="form-fourth-step__label">
                   <p className="form-fourth-step__input-text">Godzina</p>
                   <input
@@ -127,6 +161,11 @@ export const FormFourthStep = () => {
                     })}
                   />
                 </label>
+                {errors.time && (
+                  <p className="form-content__form-error form-fourth-step__error">
+                    {errors.time.message}
+                  </p>
+                )}
                 <label className="form-fourth-step__label form-fourth-step__label-area">
                   <p className="form-fourth-step__input-text">
                     Uwagi
@@ -138,6 +177,7 @@ export const FormFourthStep = () => {
                     rows={4}
                     maxLength={100}
                     {...register("note")}
+                    placeholder="(opcjonalnie)"
                   />
                 </label>
               </div>
