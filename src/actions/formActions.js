@@ -5,6 +5,8 @@ const actionsType = {
   locationSet: "form/locationSet",
   whoIsAssistanceSet: "form/whoIsAssistanceSet",
   organizationSet: "form/organizationSet",
+  pickUpAddressSet: "form/pickUpAddressSet",
+  pickUpDateSet: "form/pickUpDateSet",
 };
 
 const changePage = (payload) => {
@@ -49,6 +51,29 @@ const setOrganization = (payload) => {
   };
 };
 
+const setPickUpAddress = ({ street, city, postCode, phone }) => {
+  return {
+    type: actionsType.pickUpAddressSet,
+    payload: {
+      street,
+      city,
+      postCode,
+      phone,
+    },
+  };
+};
+
+const setPickUpDate = ({ time, date, note }) => {
+  return {
+    type: actionsType.pickUpDateSet,
+    payload: {
+      date,
+      time,
+      note,
+    },
+  };
+};
+
 export {
   actionsType,
   changePage,
@@ -57,4 +82,6 @@ export {
   setLocation,
   setWhoIsAssistance,
   setOrganization,
+  setPickUpAddress,
+  setPickUpDate,
 };

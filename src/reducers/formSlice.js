@@ -7,6 +7,17 @@ const initialState = {
   location: "0",
   whoIsAssistance: [],
   organization: "",
+  pickUpAddress: {
+    street: "",
+    city: "",
+    postCode: "",
+    phone: "",
+  },
+  pickUpDate: {
+    date: "",
+    time: "",
+    note: "",
+  },
 };
 
 const formReducer = (state = initialState, { type, payload }) => {
@@ -40,6 +51,25 @@ const formReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         organization: payload,
+      };
+    case actionsType.pickUpAddressSet:
+      return {
+        ...state,
+        pickUpAddress: {
+          street: payload.street,
+          city: payload.city,
+          postCode: payload.postCode,
+          phone: payload.phone,
+        },
+      };
+    case actionsType.pickUpDate:
+      return {
+        ...state,
+        pickUpDate: {
+          date: payload.date,
+          time: payload.time,
+          note: payload.note,
+        },
       };
     default:
       return state;
