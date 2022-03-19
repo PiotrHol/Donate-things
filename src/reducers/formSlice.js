@@ -62,7 +62,7 @@ const formReducer = (state = initialState, { type, payload }) => {
           phone: payload.phone,
         },
       };
-    case actionsType.pickUpDate:
+    case actionsType.pickUpDateSet:
       return {
         ...state,
         pickUpDate: {

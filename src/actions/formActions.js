@@ -63,7 +63,7 @@ const setPickUpAddress = ({ street, city, postCode, phone }) => {
   };
 };
 
-const setPickUpDate = ({ time, date, note }) => {
+const setPickUpDate = ({ date, time, note }) => {
   return {
     type: actionsType.pickUpDateSet,
     payload: {

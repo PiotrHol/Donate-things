@@ -2,20 +2,43 @@ import React from "react";
 import "../FormContent/formContent.scss";
 import "./formFourthStep.scss";
 import { useDispatch } from "react-redux";
-import { changePage } from "../../actions/formActions";
+import {
+  changePage,
+  setPickUpAddress,
+  setPickUpDate,
+} from "../../actions/formActions";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import classNames from "classnames";
 
 export const FormFourthStep = () => {
   const dispatch = useDispatch();
+  const street = useSelector((state) => state.form.pickUpAddress.street);
+  const city = useSelector((state) => state.form.pickUpAddress.city);
+  const postCode = useSelector((state) => state.form.pickUpAddress.postCode);
+  const phone = useSelector((state) => state.form.pickUpAddress.phone);
+  const date = useSelector((state) => state.form.pickUpDate.date);
+  const time = useSelector((state) => state.form.pickUpDate.time);
+  const note = useSelector((state) => state.form.pickUpDate.note);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      street,
+      city,
+      postCode,
+      phone,
+      date,
+      time,
+      note,
+    },
+  });
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(setPickUpAddress(data));
+    dispatch(setPickUpDate(data));
   };
 
   return (
