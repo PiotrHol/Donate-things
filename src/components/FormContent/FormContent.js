@@ -5,6 +5,7 @@ import { FormFirstStep } from "../FormFirstStep/FormFirstStep";
 import { FormSecondStep } from "../FormSecondStep/FormSecondStep";
 import { FormThirdStep } from "../FormThirdStep/FormThirdStep";
 import { FormFourthStep } from "../FormFourthStep/FormFourthStep";
+import { Summary } from "../Summary/Summary";
 
 export const FormContent = () => {
   const currentStep = useSelector((state) => state.form.currentStep);
@@ -18,6 +19,8 @@ export const FormContent = () => {
       return <FormThirdStep />;
     case 4:
       return <FormFourthStep />;
+    case 5:
+      return <Summary />;
     default:
       return <FormFirstStep />;
   }

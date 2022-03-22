@@ -39,6 +39,7 @@ export const FormFourthStep = () => {
   const onSubmit = (data) => {
     dispatch(setPickUpAddress(data));
     dispatch(setPickUpDate(data));
+    dispatch(changePage(5));
   };
 
   return (
