@@ -1,0 +1,169 @@
+@import "../../scss/main.scss";
+
+.summary {
+  width: 100%;
+
+  &__main {
+    height: 840px;
+
+    &::before {
+      height: inherit;
+      background-position-x: -1000px;
+
+      @include mediaTablet {
+        background-position-x: -900px;
+      }
+    }
+
+    @include mediaDesktop {
+      height: auto;
+      background-position-x: -700px;
+    }
+
+    @include mediaMax {
+      background-position-x: -150px;
+    }
+
+    @include mediaFull {
+      background-position-x: 0;
+    }
+  }
+
+  &__main-title {
+    margin-top: 30px;
+
+    @include mediaDesktop {
+      margin-top: 70px;
+    }
+  }
+
+  &__form {
+    @include mediaMax {
+      width: 870px;
+    }
+
+    @include mediaFull {
+      width: 900px;
+    }
+  }
+
+  &__give {
+    width: 100%;
+    margin-bottom: 20px;
+
+    @include mediaDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+
+    @include mediaDesktop {
+      font-size: 19px;
+    }
+
+    @include mediaMax {
+      font-size: 20px;
+    }
+  }
+
+  &__give-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  &__give-icon {
+    width: 45px;
+    height: 45px;
+    padding: 2px;
+    margin-right: 10px;
+
+    @include mediaDesktop {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__give-text {
+    font-weight: 400;
+    font-size: 16px;
+
+    @include mediaDesktop {
+      font-size: 17px;
+    }
+
+    @include mediaMax {
+      font-size: 18px;
+    }
+  }
+
+  &__details {
+    width: 100%;
+
+    @include mediaMax {
+      display: flex;
+    }
+  }
+
+  &__details-box {
+    width: 100%;
+  }
+
+  &__details-wrapper {
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 23px;
+    margin: 20px 0;
+
+    @include mediaDesktop {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    @include mediaMax {
+      font-size: 19px;
+      line-height: 25px;
+    }
+  }
+
+  &__details-description {
+    width: 32%;
+  }
+
+  &__details-data {
+    width: 68%;
+
+    @include mediaTablet {
+      width: 50%;
+    }
+
+    @include mediaDesktop {
+      width: 68%;
+    }
+  }
+
+  &__btn-wrapper {
+    width: 300px;
+
+    @include mediaMax {
+      width: 360px;
+    }
+  }
+
+  &__btn {
+    @include mediaMax {
+      margin: 50px 0;
+    }
+  }
+
+  &__btn-check {
+    width: 175px;
+  }
+}
