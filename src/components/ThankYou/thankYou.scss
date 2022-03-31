@@ -1,0 +1,69 @@
+@import "../../scss/main.scss";
+
+.thank-you {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+
+  @include mediaDesktop {
+    width: 70%;
+    padding: 0 15px;
+  }
+
+  &__main {
+    height: 740px;
+
+    &::before {
+      height: inherit;
+      background-position-x: -1000px;
+
+      @include mediaTablet {
+        background-position-x: -800px;
+      }
+    }
+
+    @include mediaDesktop {
+      background-position-x: -450px;
+    }
+
+    @include mediaMax {
+      background-position-x: -150px;
+    }
+
+    @include mediaFull {
+      background-position-x: -50px;
+    }
+  }
+
+  &__title {
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 43px;
+    letter-spacing: -0.8px;
+    text-align: center;
+
+    @include mediaDesktop {
+      font-size: 33px;
+      line-height: 48px;
+    }
+
+    @include mediaMax {
+      font-size: 38px;
+      line-height: 53px;
+    }
+  }
+
+  &__decoration {
+    width: 200px;
+    margin-top: 15px;
+
+    @include mediaMax {
+      width: 250px;
+      margin-top: 25px;
+    }
+  }
+}
