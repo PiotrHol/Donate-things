@@ -10,6 +10,7 @@ import {
   browserSessionPersistence,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
 
 export const SignUp = () => {
   const [loginError, setLoginError] = useState(false);
@@ -22,6 +23,7 @@ export const SignUp = () => {
     setPersistence(auth, browserSessionPersistence).then(async () => {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(getFirestore(), "forms", email), {});
         history.push("/");
       } catch {
         setLoginError(true);
