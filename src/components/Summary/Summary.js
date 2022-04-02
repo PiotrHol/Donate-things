@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../FormContent/formContent.scss";
 import "./summary.scss";
 import { useDispatch } from "react-redux";
 import { changePage } from "../../actions/formActions";
 import { useSelector } from "react-redux";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import shirtIcon from "../../assets/Icon-1.svg";
 import circleArrows from "../../assets/Icon-4.svg";
 
@@ -19,11 +20,44 @@ export const Summary = () => {
     howManyBags !== 1 ? (howManyBags > 4 ? "worków" : "worki") : "worek";
   const address = useSelector((state) => state.form.pickUpAddress);
   const date = useSelector((state) => state.form.pickUpDate);
+  const userId = useSelector((state) => state.auth.id);
+  const [sendingError, setSendingError] = useState(false);
+
+  useEffect(() => {
+    if (sendingError) {
+      const timeoutId = setTimeout(() => {
+        setSendingError(false);
+      }, 5000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [sendingError]);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formId = new Date().toLocaleString();
+
+    try {
+      await setDoc(doc(getFirestore(), "forms", userId, "sent", formId), {
+        things: whichThings,
+        bags: howManyBags,
+        whoIsAssistance: forWho.filter((who) => who),
+        location: location,
+        pickUp: {
+          ...address,
+          ...date,
+        },
+      });
+      dispatch(changePage(6));
+    } catch {
+      setSendingError(true);
+    }
+  };
 
   return (
     <div className="form-content">
       <div className="form-content__main summary__main">
-        <form className="form-content__form summary__form">
+        <form onSubmit={onSubmit} className="form-content__form summary__form">
           <h2 className="form-content__form-title summary__main-title">
             Podsumowanie Twojej darowizny
           </h2>
@@ -102,10 +136,17 @@ export const Summary = () => {
                     <br />
                     dla kuriera:
                   </p>
-                  <p className="summary__details-data">{date.note}</p>
+                  <p className="summary__details-data">
+                    {date.note ? date.note : "brak"}
+                  </p>
                 </div>
               </div>
             </div>
+            {sendingError && (
+              <p className="form-content__form-error">
+                Błąd wysyłania. Spróbuj ponownie później.
+              </p>
+            )}
             <div className="form-content__form-btn-wrapper summary__btn-wrapper">
               <button
                 className="form-content__form-btn summary__btn"
