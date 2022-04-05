@@ -71,6 +71,27 @@ const formReducer = (state = initialState, { type, payload }) => {
           note: payload.note,
         },
       };
+    case actionsType.formClear:
+      return {
+        ...state,
+        currentStep: 1,
+        things: "",
+        bags: 0,
+        location: "0",
+        whoIsAssistance: [],
+        organization: "",
+        pickUpAddress: {
+          street: "",
+          city: "",
+          postCode: "",
+          phone: "",
+        },
+        pickUpDate: {
+          date: "",
+          time: "",
+          note: "",
+        },
+      };
     default:
       return state;
   }

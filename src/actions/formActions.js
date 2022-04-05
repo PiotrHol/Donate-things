@@ -7,6 +7,7 @@ const actionsType = {
   organizationSet: "form/organizationSet",
   pickUpAddressSet: "form/pickUpAddressSet",
   pickUpDateSet: "form/pickUpDateSet",
+  formClear: "form/clear",
 };
 
 const changePage = (payload) => {
@@ -74,6 +75,12 @@ const setPickUpDate = ({ date, time, note }) => {
   };
 };
 
+const clearForm = () => {
+  return {
+    type: actionsType.formClear,
+  };
+};
+
 export {
   actionsType,
   changePage,
@@ -84,4 +91,5 @@ export {
   setOrganization,
   setPickUpAddress,
   setPickUpDate,
+  clearForm,
 };

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../FormContent/formContent.scss";
 import "./thankYou.scss";
 import decoration from "../../assets/Decoration.svg";
+import { useDispatch } from "react-redux";
+import { clearForm } from "../../actions/formActions";
 
 export const ThankYou = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => () => dispatch(clearForm()), []);
+
   return (
     <div className="form-content">
       <div className="form-content__main thank-you__main">
