@@ -116,7 +116,7 @@ export const Authorization = ({
             {isSignUp ? "Załóż konto" : "Zaloguj się"}
             {loadingIcon && (
               <FontAwesomeIcon
-                className="summary__loading-icon"
+                className="authorization__loading-icon"
                 icon={faSpinner}
                 pulse
               />
