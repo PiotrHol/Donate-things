@@ -13,11 +13,13 @@ export const FormContent = () => {
   const currentStep = useSelector((state) => state.form.currentStep);
 
   useEffect(() => {
-    scroller.scrollTo("scrollContent", {
-      spy: true,
-      smooth: true,
-      duration: 1000,
-    });
+    if (currentStep !== 1) {
+      scroller.scrollTo("scrollContent", {
+        spy: true,
+        smooth: true,
+        duration: 1000,
+      });
+    }
   }, [currentStep]);
 
   switch (currentStep) {
