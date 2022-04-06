@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./formContent.scss";
 import { useSelector } from "react-redux";
 import { FormFirstStep } from "../FormFirstStep/FormFirstStep";
@@ -7,24 +7,61 @@ import { FormThirdStep } from "../FormThirdStep/FormThirdStep";
 import { FormFourthStep } from "../FormFourthStep/FormFourthStep";
 import { Summary } from "../Summary/Summary";
 import { ThankYou } from "../ThankYou/ThankYou";
+import { scroller, Element } from "react-scroll";
 
 export const FormContent = () => {
   const currentStep = useSelector((state) => state.form.currentStep);
 
+  useEffect(() => {
+    scroller.scrollTo("scrollContent", {
+      spy: true,
+      smooth: true,
+      duration: 1000,
+    });
+  }, [currentStep]);
+
   switch (currentStep) {
     case 1:
-      return <FormFirstStep />;
+      return (
+        <Element name="scrollContent">
+          <FormFirstStep />
+        </Element>
+      );
     case 2:
-      return <FormSecondStep />;
+      return (
+        <Element name="scrollContent">
+          <FormSecondStep />
+        </Element>
+      );
     case 3:
-      return <FormThirdStep />;
+      return (
+        <Element name="scrollContent">
+          <FormThirdStep />
+        </Element>
+      );
     case 4:
-      return <FormFourthStep />;
+      return (
+        <Element name="scrollContent">
+          <FormFourthStep />
+        </Element>
+      );
     case 5:
-      return <Summary />;
+      return (
+        <Element name="scrollContent">
+          <Summary />
+        </Element>
+      );
     case 6:
-      return <ThankYou />;
+      return (
+        <Element name="scrollContent">
+          <ThankYou />
+        </Element>
+      );
     default:
-      return <FormFirstStep />;
+      return (
+        <Element name="scrollContent">
+          <FormFirstStep />
+        </Element>
+      );
   }
 };
