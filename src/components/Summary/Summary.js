@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import shirtIcon from "../../assets/Icon-1.svg";
 import circleArrows from "../../assets/Icon-4.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export const Summary = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ export const Summary = () => {
   const date = useSelector((state) => state.form.pickUpDate);
   const userId = useSelector((state) => state.auth.id);
   const [sendingError, setSendingError] = useState(false);
+  const [isLoadingIcon, setIsLoadingIcon] = useState(false);
 
   useEffect(() => {
     if (sendingError) {
@@ -35,6 +38,7 @@ export const Summary = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setIsLoadingIcon(true);
     const formId = new Date().toLocaleString();
 
     try {
@@ -50,6 +54,7 @@ export const Summary = () => {
       });
       dispatch(changePage(6));
     } catch {
+      setIsLoadingIcon(false);
       setSendingError(true);
     }
   };
@@ -160,6 +165,13 @@ export const Summary = () => {
                 type="submit"
               >
                 Potwierdzam
+                {isLoadingIcon && (
+                  <FontAwesomeIcon
+                    className="summary__loading-icon"
+                    icon={faSpinner}
+                    pulse
+                  />
+                )}
               </button>
             </div>
           </div>
