@@ -16,21 +16,24 @@ export const Login = () => {
   const [loginError, setLoginError] = useState(false);
   const history = useHistory();
   const { reset } = useForm();
-  const auth = useSelector(state => state.auth.id);
-  
+  const auth = useSelector((state) => state.auth.id);
+  const [isLoadingIcon, setIsLoadingIcon] = useState(false);
+
   useEffect(() => {
     if (auth) {
       history.push("/");
     }
-  }, [auth])
+  }, [auth]);
 
   const logInHandler = ({ email, password }) => {
+    setIsLoadingIcon(true);
     const auth = getAuth();
 
     setPersistence(auth, browserSessionPersistence).then(async () => {
       try {
         await signInWithEmailAndPassword(auth, email, password);
       } catch {
+        setIsLoadingIcon(false);
         setLoginError(true);
       }
     });
@@ -46,6 +49,7 @@ export const Login = () => {
           isSignUp={false}
           onSubmit={logInHandler}
           loginError={loginError}
+          loadingIcon={isLoadingIcon}
         />
       </div>
     </div>

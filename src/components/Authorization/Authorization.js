@@ -4,8 +4,15 @@ import decoration from "../../assets/Decoration.svg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-export const Authorization = ({ isSignUp, onSubmit, loginError }) => {
+export const Authorization = ({
+  isSignUp,
+  onSubmit,
+  loginError,
+  loadingIcon,
+}) => {
   const {
     register,
     handleSubmit,
@@ -107,6 +114,13 @@ export const Authorization = ({ isSignUp, onSubmit, loginError }) => {
             className="authorization__form-btn authorization__form-btn--auth"
           >
             {isSignUp ? "Załóż konto" : "Zaloguj się"}
+            {loadingIcon && (
+              <FontAwesomeIcon
+                className="summary__loading-icon"
+                icon={faSpinner}
+                pulse
+              />
+            )}
           </button>
         </div>
       </form>

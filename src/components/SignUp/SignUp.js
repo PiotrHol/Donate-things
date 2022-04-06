@@ -16,8 +16,10 @@ export const SignUp = () => {
   const [loginError, setLoginError] = useState(false);
   const history = useHistory();
   const { reset } = useForm();
+  const [isLoadingIcon, setIsLoadingIcon] = useState(false);
 
   const signUpHandler = ({ email, password }) => {
+    setIsLoadingIcon(true);
     const auth = getAuth();
 
     setPersistence(auth, browserSessionPersistence).then(async () => {
@@ -26,6 +28,7 @@ export const SignUp = () => {
         await setDoc(doc(getFirestore(), "forms", email), {});
         history.push("/");
       } catch {
+        setIsLoadingIcon(false);
         setLoginError(true);
       }
     });
@@ -41,6 +44,7 @@ export const SignUp = () => {
           isSignUp={true}
           onSubmit={signUpHandler}
           loginError={loginError}
+          loadingIcon={isLoadingIcon}
         />
       </div>
     </div>
