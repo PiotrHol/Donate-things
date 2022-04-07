@@ -8,11 +8,11 @@ import { getAuth, signOut } from "firebase/auth";
 
 export const Navigation = ({ inHomePage }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const auth = useSelector(state => state.auth.id);
+  const auth = useSelector((state) => state.auth.id);
 
   const signOutBtn = async () => {
     await signOut(getAuth());
-  }
+  };
 
   return (
     <div className="navigation">
@@ -49,43 +49,79 @@ export const Navigation = ({ inHomePage }) => {
               )}
             </li>
             <li>
-              <Scroll
-                activeClass="navigation__page-nav-link--active"
-                to="whats-going-on"
-                spy={true}
-                smooth={true}
-                duration={1000}
-                className="navigation__page-nav-link"
-                onClick={() => showMenu && setShowMenu(false)}
-              >
-                O co chodzi?
-              </Scroll>
+              {inHomePage ? (
+                <Scroll
+                  activeClass="navigation__page-nav-link--active"
+                  to="whats-going-on"
+                  spy={true}
+                  smooth={true}
+                  duration={1000}
+                  className="navigation__page-nav-link"
+                  onClick={() => showMenu && setShowMenu(false)}
+                >
+                  O co chodzi?
+                </Scroll>
+              ) : (
+                <Link
+                  className="navigation__page-nav-link"
+                  to="/"
+                  onClick={() =>
+                    sessionStorage.setItem("scrollTarget", "whats-going-on")
+                  }
+                >
+                  O co chodzi?
+                </Link>
+              )}
             </li>
             <li>
-              <Scroll
-                activeClass="navigation__page-nav-link--active"
-                to="about-us"
-                spy={true}
-                smooth={true}
-                duration={1000}
-                className="navigation__page-nav-link"
-                onClick={() => showMenu && setShowMenu(false)}
-              >
-                O nas
-              </Scroll>
+              {inHomePage ? (
+                <Scroll
+                  activeClass="navigation__page-nav-link--active"
+                  to="about-us"
+                  spy={true}
+                  smooth={true}
+                  duration={1000}
+                  className="navigation__page-nav-link"
+                  onClick={() => showMenu && setShowMenu(false)}
+                >
+                  O nas
+                </Scroll>
+              ) : (
+                <Link
+                  className="navigation__page-nav-link"
+                  to="/"
+                  onClick={() =>
+                    sessionStorage.setItem("scrollTarget", "about-us")
+                  }
+                >
+                  O nas
+                </Link>
+              )}
             </li>
             <li>
-              <Scroll
-                activeClass="navigation__page-nav-link--active"
-                to="who-we-help"
-                spy={true}
-                smooth={true}
-                duration={1000}
-                className="navigation__page-nav-link"
-                onClick={() => showMenu && setShowMenu(false)}
-              >
-                Fundacja i organizacje
-              </Scroll>
+              {inHomePage ? (
+                <Scroll
+                  activeClass="navigation__page-nav-link--active"
+                  to="who-we-help"
+                  spy={true}
+                  smooth={true}
+                  duration={1000}
+                  className="navigation__page-nav-link"
+                  onClick={() => showMenu && setShowMenu(false)}
+                >
+                  Fundacja i organizacje
+                </Scroll>
+              ) : (
+                <Link
+                  className="navigation__page-nav-link"
+                  to="/"
+                  onClick={() =>
+                    sessionStorage.setItem("scrollTarget", "who-we-help")
+                  }
+                >
+                  Fundacja i organizacje
+                </Link>
+              )}
             </li>
             <li>
               <Scroll
