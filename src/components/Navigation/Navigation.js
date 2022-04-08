@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
 
-export const Navigation = ({ inHomePage }) => {
+export const Navigation = ({ inHomePage, inFormPage }) => {
   const [showMenu, setShowMenu] = useState(false);
   const auth = useSelector((state) => state.auth.id);
 
@@ -124,17 +124,29 @@ export const Navigation = ({ inHomePage }) => {
               )}
             </li>
             <li>
-              <Scroll
-                activeClass="navigation__page-nav-link--active"
-                to="contact-and-footer"
-                spy={true}
-                smooth={true}
-                duration={1000}
-                className="navigation__page-nav-link"
-                onClick={() => showMenu && setShowMenu(false)}
-              >
-                Kontakt
-              </Scroll>
+              {inHomePage || inFormPage ? (
+                <Scroll
+                  activeClass="navigation__page-nav-link--active"
+                  to="contact-and-footer"
+                  spy={true}
+                  smooth={true}
+                  duration={1000}
+                  className="navigation__page-nav-link"
+                  onClick={() => showMenu && setShowMenu(false)}
+                >
+                  Kontakt
+                </Scroll>
+              ) : (
+                <Link
+                  className="navigation__page-nav-link"
+                  to="/"
+                  onClick={() =>
+                    sessionStorage.setItem("scrollTarget", "contact")
+                  }
+                >
+                  Kontakt
+                </Link>
+              )}
             </li>
           </ul>
           <ul className="navigation__auth-nav">

@@ -38,7 +38,9 @@ export const Home = () => {
       <Element name="who-we-help">
         <Fundations />
       </Element>
-      <Contact />
+      <Element name="contact">
+        <Contact />
+      </Element>
     </div>
   );
 };

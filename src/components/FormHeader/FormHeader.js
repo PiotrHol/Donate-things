@@ -6,7 +6,7 @@ import decoration from "../../assets/Decoration.svg";
 export const FormHeader = () => {
   return (
     <div className="form-header">
-      <Navigation inHomePage={false} />
+      <Navigation inHomePage={false} inFormPage={true} />
       <div className="form-header__content">
         <h2 className="form-header__title">
           Oddaj rzeczy, których już nie chcesz
