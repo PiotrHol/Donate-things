@@ -1,0 +1,32 @@
+@import "../../scss/main.scss";
+
+.to-top-btn {
+    background: $colorImportant;
+    border: 0.75px solid $colorWhite;
+    border-radius: 8px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0.65;
+
+    @include mediaDesktop {
+        bottom: 25px;
+        right: 25px;
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &__icon {
+        font-size: 30px;
+        padding: 10px;
+        color: $colorWhite;
+
+        @include mediaDesktop {
+            font-size: 40px;
+        }
+    }
+}

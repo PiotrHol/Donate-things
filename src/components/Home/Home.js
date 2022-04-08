@@ -7,6 +7,7 @@ import { About } from "../About/About";
 import { Fundations } from "../Fundations/Fundations";
 import { Contact } from "../Contact/Contact";
 import { scroller, Element, animateScroll } from "react-scroll";
+import { ToTopBtn } from "../ToTopBtn/ToTopBtn";
 
 export const Home = () => {
   useEffect(() => {
@@ -25,6 +26,7 @@ export const Home = () => {
 
   return (
     <div className="home">
+      <ToTopBtn />
       <HomeHeader />
       <ThreeColumns />
       <Element name="whats-going-on">
