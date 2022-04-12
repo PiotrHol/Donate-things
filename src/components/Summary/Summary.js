@@ -9,6 +9,7 @@ import shirtIcon from "../../assets/Icon-1.svg";
 import circleArrows from "../../assets/Icon-4.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import emailjs from "@emailjs/browser";
 
 export const Summary = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,26 @@ export const Summary = () => {
           ...date,
         },
       });
+
+      try {
+        await emailjs.send(
+          process.env.REACT_APP_EMAIL_SERVICE_ID,
+          process.env.REACT_APP_EMAIL_FORM_TEMPLATE_ID,
+          {
+            name: userId,
+            things: whichThings,
+            bags: howManyBags,
+            whoIsAssistance: forWho.filter((who) => who),
+            location,
+            ...address,
+            ...date,
+          },
+          process.env.REACT_APP_EMAIL_USER_ID
+        );
+      } catch {
+        console.log("Sending email error");
+      }
+
       dispatch(changePage(6));
     } catch {
       setIsLoadingIcon(false);
