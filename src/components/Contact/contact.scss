@@ -1,230 +1,237 @@
 @import "../../scss/main.scss";
 
 .contact {
+  width: 100%;
+  padding: 20px 20px 10px 20px;
+  height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  &::before {
+    content: "";
     width: 100%;
-    padding: 20px 20px 10px 20px;
-    height: auto;
+    height: 100%;
+    background-image: url("../../assets/Background-Contact-Form.jpg");
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    @include mediaFull {
+      opacity: 0.2;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
+    margin-bottom: 80px;
+
+    @include mediaDesktop {
+      align-items: flex-end;
+    }
+
+    @include mediaMax {
+      margin-bottom: 180px;
+    }
+  }
+
+  &__title {
+    font-size: 30px;
+    margin-top: 30px;
+    align-self: center;
+
+    @include mediaMax {
+      font-size: 38px;
+      margin-top: 140px;
+    }
+  }
+
+  &__decoration {
+    padding: 20px 0 30px 0;
+    width: 170px;
+    align-self: center;
+
+    @include mediaMax {
+      padding: 30px 0 80px 0;
+      width: 250px;
+    }
+  }
+
+  &__message {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    padding-bottom: 20px;
+
+    @include mediaMax {
+      padding-bottom: 30px;
+    }
+
+    &--success {
+      color: $colorGreen;
+    }
+
+    &--error {
+      color: $colorRed;
+    }
+  }
+
+  &__form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: space-between;
 
-    &::before {
-        content: "";
-        width: 100%;
-        height: 100%;
-        background-image: url("../../assets/Background-Contact-Form.jpg");
-        background-position: left top;
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: 0.1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-
-        @include mediaFull {
-            opacity: 0.2;
-        }
+    @include mediaDesktop {
+      width: 528px;
+      margin-right: 40px;
     }
 
-    &__content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        margin-bottom: 80px;
+    @include mediaMax {
+      margin-right: 100px;
+    }
+  }
 
-        @include mediaDesktop {
-            align-items: flex-end;
-        }
+  &__form-wrapper {
+    width: 100%;
 
-        @include mediaMax {
-            margin-bottom: 180px;
-        }
+    @include mediaDesktop {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__form-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 10px 0;
+
+    &--name {
+      @include mediaDesktop {
+        padding-right: 16px;
+      }
+    }
+  }
+
+  &__form-input {
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $colorPaginationBorder;
+    padding: 4px 0;
+    margin-top: 10px;
+    font-size: 18px;
+
+    &--error {
+      border-bottom: 1px solid $colorRed;
     }
 
-    &__title {
-        font-size: 30px;
-        margin-top: 30px;
-        align-self: center;
-
-        @include mediaMax {
-            font-size: 38px;
-            margin-top: 140px;
-        }
+    &::placeholder {
+      color: $colorPlaceholder;
+      font-size: 18px;
     }
 
-    &__decoration {
-        padding: 20px 0 30px 0;
-        width: 170px;
-        align-self: center;
+    &:focus {
+      border-color: $colorImportant;
+    }
+  }
 
-        @include mediaMax {
-            padding: 30px 0 80px 0;
-            width: 250px;
-        }
+  &__form-textarea {
+    width: 100%;
+    height: 150px;
+
+    @include mediaTablet {
+      height: 100px;
     }
 
-    &__success-message {
-        width: 100%;
-        color: $colorGreen;
-        font-size: 16px;
-        text-align: center;
-        padding-bottom: 20px;
+    @include mediaDesktop {
+      min-height: 150px;
+      max-height: 250px;
+    }
+  }
 
-        @include mediaMax {
-            padding-bottom: 30px;
-        }
+  &__form-error-message {
+    color: $colorRed;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  &__form-btn {
+    font-size: 18px;
+    font-weight: 300;
+    background: transparent;
+    border: 0.75px solid $colorText;
+    padding: 10px 30px;
+    margin-top: 20px;
+
+    @include mediaMax {
+      padding: 13px 50px;
+      margin-top: 40px;
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    @include mediaDesktop {
+      width: 60%;
+      justify-content: space-between;
     }
 
-    &__form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+    @include mediaMax {
+      width: 56%;
+      margin-bottom: 5px;
+    }
+  }
 
-        @include mediaDesktop {
-            width: 528px;
-            margin-right: 40px;
-        }
+  &__footer-title {
+    font-size: 14px;
 
-        @include mediaMax {
-            margin-right: 100px;
-        }
+    @include mediaMax {
+      font-size: 16px;
+    }
+  }
+
+  &__footer-icons-box {
+    @include mediaDesktop {
+      margin-right: 30px;
     }
 
-    &__form-wrapper {
-        width: 100%;
+    @include mediaMax {
+      margin-right: 80px;
+    }
+  }
 
-        @include mediaDesktop {
-            display: flex;
-            justify-content: space-between;
-        }
+  &__footer-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+
+    @include mediaTablet {
+      margin: 0 10px;
     }
 
-    &__form-content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        font-weight: 500;
-        font-size: 16px;
-        margin: 10px 0;
-
-        &--name {
-            @include mediaDesktop {
-                padding-right: 16px;
-            }
-        }
+    @include mediaMax {
+      width: 30px;
+      height: 30px;
     }
-
-    &__form-input {
-        background: transparent;
-        outline: none;
-        border: none;
-        border-bottom: 1px solid $colorPaginationBorder;
-        padding: 4px 0;
-        margin-top: 10px;
-        font-size: 18px;
-
-        &--error {
-            border-bottom: 1px solid $colorRed;
-        }
-
-        &::placeholder {
-            color: $colorPlaceholder;
-            font-size: 18px;
-        }
-
-        &:focus {
-            border-color: $colorImportant;
-        }
-    }
-
-    &__form-textarea {
-        width: 100%;
-        height: 150px;
-
-        @include mediaTablet {
-            height: 100px;
-        }
-
-        @include mediaDesktop {
-            min-height: 150px;
-            max-height: 250px;
-        }
-    }
-
-    &__form-error-message {
-        color: $colorRed;
-        margin-top: 5px;
-        font-size: 12px;
-    }
-
-    &__form-btn {
-        font-size: 18px;
-        font-weight: 300;
-        background: transparent;
-        border: 0.75px solid $colorText;
-        padding: 10px 30px;
-        margin-top: 20px;
-
-        @include mediaMax {
-            padding: 13px 50px;
-            margin-top: 40px;
-        }
-    }
-
-    &__footer {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        position: relative;
-
-        @include mediaDesktop {
-            width: 60%;
-            justify-content: space-between;
-        }
-
-        @include mediaMax {
-            width: 56%;
-            margin-bottom: 5px;
-        }
-    }
-
-    &__footer-title {
-        font-size: 14px;
-
-        @include mediaMax {
-            font-size: 16px;
-        }
-    }
-
-    &__footer-icons-box {
-        @include mediaDesktop {
-            margin-right: 30px;
-        }
-
-        @include mediaMax {
-            margin-right: 80px;
-        }
-    }
-
-    &__footer-icon {
-        width: 25px;
-        height: 25px;
-        margin: 0 5px;
-
-        @include mediaTablet {
-            margin: 0 10px;
-        }
-
-        @include mediaMax {
-            width: 30px;
-            height: 30px;
-        }
-    }
+  }
 }

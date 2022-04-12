@@ -6,6 +6,7 @@ import instagram from "../../assets/Instagram.svg";
 import { useForm } from "react-hook-form";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
   const {
@@ -15,33 +16,32 @@ export const Contact = () => {
     reset,
   } = useForm();
   const [isFetchSuccess, setIsFetchSuccess] = useState(false);
+  const [isFetchError, setIsFetchError] = useState(false);
 
   const onSubmit = async (dataToSet) => {
     try {
-      const response = await fetch(
-        "https://fer-api.coderslab.pl/v1/portfolio/contact",
-        {
-          method: "POST",
-          body: JSON.stringify(dataToSet),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+      const response = await emailjs.send(
+        process.env.REACT_APP_EMAIL_SERVICE_ID,
+        process.env.REACT_APP_EMAIL_CONTACT_TEMPLATE_ID,
+        { ...dataToSet },
+        process.env.REACT_APP_EMAIL_USER_ID
       );
 
-      const responseData = await response.json();
-
-      if (responseData.status === "success") {
+      if (response.status === 200) {
         setIsFetchSuccess(true);
         reset();
-        const timeout = setTimeout(() => {
-          setIsFetchSuccess(false);
-          clearTimeout(timeout);
-        }, 5000);
+      } else {
+        setIsFetchError(true);
       }
-    } catch (error) {
-      console.log(console.error);
+    } catch {
+      setIsFetchError(true);
+      console.log("Sending contact form error.");
     }
+    const timeout = setTimeout(() => {
+      setIsFetchSuccess(false);
+      setIsFetchError(false);
+      clearTimeout(timeout);
+    }, 5000);
   };
 
   return (
@@ -55,11 +55,20 @@ export const Contact = () => {
             alt="decoration"
           />
           {isFetchSuccess && (
-            <div className="contact__success-message">
+            <div className="contact__message contact__message--success">
               <p>
                 Wiadomość została wysłana!
                 <br />
                 Wkrótce się skontaktujemy.
+              </p>
+            </div>
+          )}
+          {isFetchError && (
+            <div className="contact__message contact__message--error">
+              <p>
+                Wiadomość nie została wysłana!
+                <br />
+                Spróbuj ponownie.
               </p>
             </div>
           )}
