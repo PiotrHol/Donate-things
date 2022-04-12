@@ -17,9 +17,9 @@ export const ThankYou = () => {
           <h1 className="thank-you__title">
             Dziękujemy za przesłanie formularza
             <br />
-            Na maila prześlemy wszelkie
+            Skontaktujemy się po
             <br />
-            informacje o odbiorze.
+            weryfikacji zgłoszenia.
           </h1>
           <img
             className="thank-you__decoration"
