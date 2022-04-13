@@ -10,7 +10,7 @@ https://piotrhol.github.io/Donate-things/
 
 ## Technologies
 
-React, Sass, Firebase, Redux, React Router, React Scroll, React Hook Form, classnames, dotenv
+React, Sass, Firebase, Redux, React Router, React Scroll, React Hook Form, EmailJS, classnames, dotenv
 
 ## Example screenshots
 
@@ -32,4 +32,4 @@ React, Sass, Firebase, Redux, React Router, React Scroll, React Hook Form, class
 
 - Form available after logging in
 
-This part of website is under construction
+<img src="./src/assets/screenshot5.png" />
