@@ -15,7 +15,7 @@ export const ThankYou = () => {
       <div className="form-content__main thank-you__main">
         <div className="thank-you">
           <h1 className="thank-you__title">
-            Dziękujemy za przesłanie formularza
+            Dziękujemy za przesłanie formularza.
             <br />
             Skontaktujemy się po
             <br />
